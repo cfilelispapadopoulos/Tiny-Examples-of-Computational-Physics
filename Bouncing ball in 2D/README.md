@@ -43,7 +43,7 @@ The vectors and $\vec{x_p}$, $\vec{v_p}$ are the absolute position and velocity 
 ## Two separate frames of reference
 We can track the movement of the system by its center of mass (center of mass of the sphere) and then the particles on the reference frame of the center of mass. Thus, we will advance in time the center of mass, separately from the sourounding particles, and we will account for forces between them. That way we can simplify all equations and avoid errors stemming from either rounding or choice of timestep. The center of mass is under motion with variable acceleration, this is because of the gravity acceleration and the acceleration induced by the reaction force of the deformed points attached to the springs. For the center of mass acceleration can be computed through:
 
-$$M\vec{a_{cm}}=-M\vec{g}-\vec{F_r}$$
+$$M\vec{a_{cm}}=-M\vec{a_g}-\vec{F_r}$$
 
 where $\vec{F_r}$ is the net reaction force computed as the sum of the reaction forces of the deformed springs. The points around the center of mass are moving in an accelerated frame of reference. Their acceleration can be computed as:
 
