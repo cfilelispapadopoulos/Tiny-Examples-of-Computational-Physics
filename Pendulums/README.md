@@ -1,4 +1,4 @@
-# Different (not so simle) pendulum cases
+# Different (not so simple) pendulum cases
 
 The three example files correspond to the following:
 1) Not so simple pendulum (simple_pendulum.m): Solving the ODE with Kick-Drift-Kick method without small angle approximation.
@@ -37,5 +37,10 @@ $$\omega_{i+1}=\omega_{i+1/2}+f(t_{i+1},\theta_{i+1},\omega_{i+1/2})\frac{\Delta
 It shoule be noted that in this case the pendulum performes damped harmonic motion.
 
 ## Double Pendulum
+The double pendulum is composed of a pendulum mounted on a wall and the second mounted onto the bob of the first. The two threads might be of different length ($L_1$ and $L_2$) and the bobs might also be of different mass ($M_1$ and $M_2$). An example of a double pendulum is given in the figure below.
+
+![image](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/873fbe9d-3dd2-4f06-b42e-3cd4156a4984)
+
+There are many ways to derive the ODEs governing the motion of a double pendulum including direct derivation through [kinematics](https://web.mit.edu/jorloff/www/chaosTalk/double-pendulum/double-pendulum-en.html) or through Calculus of Variations using either the [Lagrangian or Hamiltonian formulations](https://scienceworld.wolfram.com/physics/DoublePendulum.html). Because of the nature of this example (supposed to be small and easy to follow) we will follow the direct kinematic approach and leave the other two for the interested reader or more appropriate examples.
 
 TBC soon
