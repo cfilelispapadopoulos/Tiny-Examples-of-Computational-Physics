@@ -41,6 +41,6 @@ The double pendulum is composed of a pendulum mounted on a wall and the second m
 
 ![image](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/873fbe9d-3dd2-4f06-b42e-3cd4156a4984)
 
-There are many ways to derive the ODEs governing the motion of a double pendulum including direct derivation through [kinematics](https://web.mit.edu/jorloff/www/chaosTalk/double-pendulum/double-pendulum-en.html) or through Calculus of Variations using either the [Lagrangian or Hamiltonian formulations](https://scienceworld.wolfram.com/physics/DoublePendulum.html). Because of the nature of this example (supposed to be small and easy to follow) we will follow the direct kinematic approach and leave the other two for the interested reader or more appropriate examples.
+There are many ways to derive the ODEs governing the motion of a double pendulum including direct derivation through [kinematics](https://web.mit.edu/jorloff/www/chaosTalk/double-pendulum/double-pendulum-en.html) or through Calculus of Variations using either the [Lagrangian or Hamiltonian formulations](https://scienceworld.wolfram.com/physics/DoublePendulum.html). Because of the nature of this example (supposed to be small and easy to follow) we will follow the direct kinematic approach and leave the other two for the interested reader or more appropriate future examples.
 
 TBC soon
