@@ -9,3 +9,5 @@ The given codes are:
 2) Beating created by the sum of two waves travelling towards the positive side of the $x$ axis with the same amplitude and small difference in frequency $f$.
 3) Standing wave created as the sum of waves travelling in opposite direction having the same amplitude $A$ and frequency $f$.
 4) Inteference created by the sum of $N$ waves with small difference in frequency.
+
+The codes are parametric and enable changes to phase, velocities, frequencies, etc.
