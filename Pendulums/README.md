@@ -43,4 +43,51 @@ The double pendulum is composed of a pendulum mounted on a wall and the second m
 
 There are many ways to derive the ODEs governing the motion of a double pendulum including direct derivation through [kinematics](https://web.mit.edu/jorloff/www/chaosTalk/double-pendulum/double-pendulum-en.html) or through Calculus of Variations using either the [Lagrangian or Hamiltonian formulations](https://scienceworld.wolfram.com/physics/DoublePendulum.html). Because of the nature of this example (supposed to be small and easy to follow) we will follow the direct kinematic approach and leave the other two for the interested reader or more appropriate future examples.
 
-TBC soon
+Let us consider the tension forces $T_1$ and $T_2$ pointing away from the bodies across the threads with length $L_1$ and $L_2$, then we can derive the equations of motion by applying Newton's second law for the bobs with masses $M_1$ and $M_2$, respectively, as follows:
+
+$$\sum F_x = M_1 \ddot{x}_1 \iff M_1 \ddot{x}_1 = -T_1 sin \theta_1 + T_2 sin \theta_2$$
+
+$$\sum F_y = M_1 \ddot{y}_1 \iff M_1 \ddot{y}_1 = T_1 cos \theta_1 - T_2 cos \theta_2- M_1 g$$
+
+and
+
+$$ \sum F_x = M_2 \ddot{x}_2 \iff M_2 \ddot{x}_2 = - T_2 sin \theta_2$$
+
+$$\sum F_y = M_2 \ddot{y}_2 \iff M_2 \ddot{y}_2 = T_2 cos \theta_2 - M_2 g$$
+
+We have to express the above 4 ODEs in terms of $\theta_1, \theta_2, \dot{\theta_1}, \dot{\theta_2}, \ddot{\theta_1}$ and $\ddot{\theta_2}$. In order to do that we can express the position of $M_1$ and $M_2$ as follows:
+
+$$x_1 = L_1 sin \theta_1$$
+
+$$y_1 = -L_1 cos \theta_1$$
+
+$$x_2 = x_1 + L_2 sin\theta_2$$
+
+$$y_2 = y_1 - L_2 cos \theta_2$$
+
+Using the above equations and their first and second derivatives with respect to time along with the ODEs derived from Newton's second law, after some algebraic manipulation, we end up in the following equations:
+
+$$\ddot{\theta_1} = \frac{-g (2 M_1+M_2) sin\theta_1 -M_2 g sin (\theta_1 - 2 \theta_2)-2 sin(\theta_1 - \theta_2) M_2 (\dot{\theta_2}^2 L_2 + \dot{\theta_1}^2 L_1 cos (\theta_1 - \theta_2))}{L_1 (2 M_1+M_2-M_2 cos(2 \theta_1-2 \theta_2))}$$
+
+
+$$\ddot{\theta_1} = \frac{2 sin (\theta_1 - \theta_2)(\dot{\theta_1}^2 L_1 (M_1 + M_2)+g (M_1+M_2) cos \theta_1 + \dot{\theta_2}^2 L_2 M_2 cos(\theta_1 - \theta_2))}{L_2 (2 M_1+M_2-M_2 cos(2 \theta_1-2 \theta_2))}$$
+
+In this form the equations, i.e.:
+
+$$\ddot{\theta_1} = f_1 (\theta_1,\theta_2,\dot{\theta_1},\dot{\theta_2},\ddot{\theta_1},\ddot{\theta_2})$$
+
+$$\ddot{\theta_2} = f_2 (\theta_1,\theta_2,\dot{\theta_1},\dot{\theta_2},\ddot{\theta_1},\ddot{\theta_2})$$
+
+we can solve the system of ODEs using a method such as Leapfrog Kick-Drift-Kick method. However, we can use higher order methods such as the [Runge-Kutta (Dormand-Prince method (RKDP))](https://en.wikipedia.org/wiki/Dormand%E2%80%93Prince_method). This method requires a system of 1st order ODEs thus by substituting $\omega_1 = \dot{\theta_1}$ and $\omega_2 = \dot{\theta_2}$ we have:
+
+$$\omega_1 = \dot{\theta_1}$$
+
+$$\omega_2 = \dot{\theta_2}$$
+
+$$\dot{\omega_1} = f_1(\theta_1,\theta_2,\dot{\theta_1},\dot{\theta_2},\ddot{\theta_1},\ddot{\theta_2})$$
+
+$$\dot{\omega_2} = f_2(\theta_1,\theta_2,\dot{\theta_1},\dot{\theta_2},\ddot{\theta_1},\ddot{\theta_2})$$
+
+In this form we can solve the system of 4 ODEs using the [MATLAB's ode45 routine](https://www.mathworks.com/help/matlab/ref/ode45.html) with initial conditions of the form $\theta_1(0)=\alpha, \theta_2(0)=\beta, \omega_1(0)=\gamma, \omega_2(0)=\delta$, which are initial angles and angular velocities.
+
+After numerical solution, using the above equation for $x_1,y_1,x_2,y_2$ we can transform back to cartesian coordinates.
