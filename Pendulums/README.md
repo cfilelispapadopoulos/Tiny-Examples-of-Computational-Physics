@@ -78,7 +78,7 @@ $$\ddot{\theta_1} = f_1 (\theta_1,\theta_2,\dot{\theta_1},\dot{\theta_2},\ddot{\
 
 $$\ddot{\theta_2} = f_2 (\theta_1,\theta_2,\dot{\theta_1},\dot{\theta_2},\ddot{\theta_1},\ddot{\theta_2})$$
 
-we can solve the system of ODEs using a method such as Leapfrog Kick-Drift-Kick method. However, we can use higher order methods such as the [Runge-Kutta (Dormand-Prince method (RKDP))](https://en.wikipedia.org/wiki/Dormand%E2%80%93Prince_method). This method requires a system of 1st order ODEs thus by substituting $\omega_1 = \dot{\theta_1}$ and $\omega_2 = \dot{\theta_2}$ we have:
+we can solve the system of ODEs using a method such as Leapfrog Kick-Drift-Kick method. However, we can use higher order methods (4th and 5th order) such as the [Runge-Kutta (Dormand-Prince method (RKDP))](https://en.wikipedia.org/wiki/Dormand%E2%80%93Prince_method). This method requires a system of 1st order ODEs thus by substituting $\omega_1 = \dot{\theta_1}$ and $\omega_2 = \dot{\theta_2}$ we have:
 
 $$\omega_1 = \dot{\theta_1}$$
 
