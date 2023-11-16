@@ -2,7 +2,7 @@
 
 ![image](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/da23d7dc-9024-4845-9c87-4252400b0f3e)
 
-The gas piston, with width $w$, height $h$ and initial position $p$ (across the $x$ axis), is filled with $O_2$, which are assigned random positions inside the piston following the uniform random distribution. The velocities are computed using the normal distribution with mean $\mu=0$ and standard deviation $\sigma=v_{a,i}=\sqrt{\frac{k_B T}{m_i}}$ (per dimension), where $k_B$ is the Maxwell - Boltzmann distribution, $T$ is the temperature and $m_i$ is the mass of an individual particle:
+The gas piston, with width $w$, height $h$ and initial position $p$ (across the $x$ axis), is filled with $O_2$, which are assigned random positions inside the piston following the uniform random distribution. The velocities are computed using the normal distribution with mean $\mu=0$ and standard deviation $\sigma=1$ multiplied by $v_{a,i}=\sqrt{\frac{k_B T}{m_i}}$ (per dimension), where $k_B$ is the Maxwell - Boltzmann distribution, $T$ is the temperature and $m_i$ is the mass of an individual particle:
 
 $$\pi(v_a)dv_a \propto exp(-\frac{v_a^2}{2\sigma^2})dv$$
 
