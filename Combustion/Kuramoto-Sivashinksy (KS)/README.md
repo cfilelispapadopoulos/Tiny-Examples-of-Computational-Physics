@@ -6,6 +6,6 @@ $$\frac{\vartheta u}{\vartheta t}+\frac{1}{2} \left( \frac{\vartheta u}{\varthet
 
 or compactly:
 
-$$u_t + \frac{1}{2} u_x^2+u_{xx}+u_{xxxx}=0$$.
+$$u_t + \frac{1}{2} u_x^2+u_{xx}+u_{xxxx}=0.$$
 
 Solving this equation numerically poses significant difficulties
