@@ -29,7 +29,7 @@ where $h=L/N$ is the mesh size and $N$ is the number of spatial intervals. We ca
 
 $$(I+\delta t D + \delta t D2 )v^{t+1}=v^t+\delta t N(v^t)$$,
 
-with initial condition $v^0=cos(x)+0.15 cos(x/8)(1+2*sin(x/8))$ and $N(v^t)=(Fv^t)\odot v^t$ ($\odot$: elementwise multiplication). The solution of the linear system is performed in a direct fashion at each timestep. It should be noted that the equations corresponding to last point of the grid ared not required to be retained in the linear system since the last point of the grid coincides with the first one. The presented approach is sensitive to the choices of time-step ($\delta t$) and mesh size ($h$).
+with initial condition $v^0=cos(x)+0.15 cos(x/8)(1+2*sin(x/8))$ and $N(v^t)=-(Fv^t)\odot v^t$ ($\odot$: elementwise multiplication). The solution of the linear system is performed in a direct fashion at each timestep. It should be noted that the equations corresponding to last point of the grid ared not required to be retained in the linear system since the last point of the grid coincides with the first one. The presented approach is sensitive to the choices of time-step ($\delta t$) and mesh size ($h$).
 
 Using the CNAB2 scheme the above equation would take the form:
 
