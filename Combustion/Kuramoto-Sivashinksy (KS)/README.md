@@ -21,7 +21,7 @@ where $L=-\frac{\vartheta^2}{\vartheta x^2}-\frac{\vartheta^4}{\vartheta x^4}$ i
 
 $$\frac{\vartheta v}{\vartheta x}=\frac{v_{i+1}-v_{i-1}}{2h}$$
 
-$$\frac{\vartheta^2 v}{\vartheta x^2}=\frac{v_{i+1}+2v_{i}+v_{i-1}}{h^2}$$
+$$\frac{\vartheta^2 v}{\vartheta x^2}=\frac{v_{i+1}-2v_{i}+v_{i-1}}{h^2}$$
 
 $$\frac{\vartheta^4 v}{\vartheta x^4}=\frac{v_{i+2}-4v_{i+1}+6v_{i}-4v_{i-1}+v{i-2}}{h^4}$$
 
