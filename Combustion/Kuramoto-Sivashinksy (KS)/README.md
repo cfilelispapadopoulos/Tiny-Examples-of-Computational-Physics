@@ -18,7 +18,7 @@ $$(I+\delta t D + \delta t D2 )v^{t+1}=v^t+\delta t N(v^t)$$,
 with initial condition $v^0=cos(x)+0.15 cos(x/8)(1+2*sin(x/8))$ and $N(v^t)=-(Fv^t)\odot v^t$ ($\odot$: elementwise multiplication). The solution of the linear system is performed in a direct fashion at each timestep. It should be noted that the equations corresponding to last point of the grid ared not required to be retained in the linear system since the last point of the grid coincides with the first one. The presented approach is sensitive to the choices of time-step ($\delta t$) and mesh size ($h$).
 Using the CNAB2 scheme the above equation would take the form:
 $$(I+0.5 \delta t D + 0.5 \delta t D2 )v^{t+1}=(I-0.5 \delta t D - 0.5 \delta t D2 )v^t+1.5 \delta t N(v^t) - 0.5 \delta t N(v^{t-1})$$.
-with $v_{-1}=v_{0}$. The 1D solution has the following result:
+with $v_{-1}=v_{0}$. The 1D solution yields the following result:
 ![combustion](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/ed40e15f-a61a-4663-bf86-30eae5767111)
 The multi-dimensional equation is of the form:
 $$v_t+\Delta v + \Delta^2 v+0.5|\nabla v|^2=0.$$
