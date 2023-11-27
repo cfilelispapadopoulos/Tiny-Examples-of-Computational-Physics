@@ -15,12 +15,12 @@ n = 1024;
 Nt = 2400;
 
 % The mesh size h
-h = L / n;
-x = linspace(0, L, n+1);
+h = 2 * L / n;
+x = linspace(-L, L, n+1);
 
 % Time
 dt = T / (Nt);
-t = linspace(0, L, Nt+1);
+t = linspace(0, T, Nt+1);
 
 % One dimensional discrete first derivative (Central Diff)
 e = ones(n,1);
@@ -30,25 +30,25 @@ F(1,n) = -1;
 F(n,1) = 1;
 
 % One dimensional discrete second derivative (\Delta)
-T = - gallery("tridiag", n);
+D = - gallery("tridiag", n);
 % Periodic Boundary
-T(1,n) = 1; T(n,1) = 1;
-T = T / (h^2);
+D(1,n) = 1; D(n,1) = 1;
+D = D / (h^2);
 
 % One dimensional discrete forth derivative (\Delta^2)
-T2 = T'*T;
+D2 = D'*D;
 
 % Identity matrix
 I = speye(n);
 
 % Forming the (Fully Implicit Linear part - Explicit Nonlinear part)
-A = I+dt*T+dt*T2;
+A = I+dt*D+dt*D2;
 
 % Matrix to retain solution at each timestep
 S = zeros(n,Nt+1);
 
 % Initial condition
-S(:,1) = cos(x(1:end-1)') + 0.1*cos(x(1:end-1)'/16).*(1+2*sin(x(1:end-1)'/16));
+S(:,1) = cos(x(1:end-1)') + 0.15*cos(x(1:end-1)'/8).*(1+2*sin(x(1:end-1)'/8));
 
 % Iterative solution
 for i=1:Nt
@@ -56,4 +56,4 @@ for i=1:Nt
 end
 
 % Plot time evolution and account for periodic boundary
-imagesc([S;S(1,:)]);colormap autumn;axis off;xlabel('time');ylabel('space');
+imagesc([S;S(1,:)]);colormap autumn;axis off;
