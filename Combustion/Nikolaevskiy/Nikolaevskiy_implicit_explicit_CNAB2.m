@@ -6,24 +6,27 @@ clc;
 clear;
 
 % Size of the domain
-L = 80*pi;
+Lx = 80*pi;
+Ly = 30*pi;
 
 % Parameter r of the Nikolaevskiy equation
 r = 0.3;
 
 % Max time
-T = 200;
+T = 20;
 
 % Number of intervals in the x direction
-n = 512;
+nx = 512;
+ny = 512;
 
 % Number of intervals in time (A small solution leads to instabilities
 % related to the implicit - explicit scheme)
-Nt = 10*1024;
+Nt = 1024;
 
 % The mesh size h
-klin = (2.0 * pi / L) .* [0:n/2,-n/2+1:-1];
-[kx, ky] = meshgrid(klin, klin);
+klinx = (2.0 * pi / Lx) .* [0:nx/2,-nx/2+1:-1];
+kliny = (2.0 * pi / Ly) .* [0:ny/2,-ny/2+1:-1];
+[kx, ky] = meshgrid(klinx, kliny);
 
 % Time
 dt = T / (Nt);
@@ -40,12 +43,12 @@ LL = -((1 - r) * D.^2 + 2*D.^4 + D.^6);
 % Matrix to retain solution - Initial condition
 % Starting with rand gives rise to interesting
 % Dynamics
-Si = randn(n,n);
+Si = randn(ny,nx);
 
 % Crank-Nicolson matrices and Corresponding Fourier
 % Transforms
-A = ones(n,n) + 0.5*dt*LL;
-B = ones(n,n) - 0.5*dt*LL;
+A = ones(ny,nx) + 0.5*dt*LL;
+B = ones(ny,nx) - 0.5*dt*LL;
 IA = A.^-1;
 Si = fftn(Si);
 Nn = -0.5*fftn(abs(ifftn(Dx.*Si).^2+(ifftn(Dy.*Si)).^2));
@@ -63,7 +66,7 @@ for i=1:Nt
     
     % Plot time evolution and account for periodic boundary
     % Negate and rescale for aesthetics
-    imagesc(imresize(-real(ifftn(Si)),4));colormap hot;axis off;
+    imagesc(imresize(-real(ifftn(Si)),6));colormap hot;pbaspect([2*Lx/max(Lx,Ly) 2*Ly/max(Lx,Ly) 1]);axis off;
     M = getframe;
 end
 
