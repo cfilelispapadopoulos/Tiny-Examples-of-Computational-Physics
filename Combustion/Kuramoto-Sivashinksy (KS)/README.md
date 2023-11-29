@@ -22,3 +22,6 @@ with $v_{-1}=v_{0}$. The 1D solution yields the following result:
 ![combustion](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/ed40e15f-a61a-4663-bf86-30eae5767111)
 The multi-dimensional equation is of the form:
 $$v_t+\Delta v + \Delta^2 v+0.5|\nabla v|^2=0.$$
+The solution of the 2D equation is performed through FFT in doubly periodic domain $[-L/2,L/2]^2$, utilizing the CNAB2 scheme described above. A plot of the solution in an intermediate timestep is the following:
+![2d](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/e599d086-14a6-450e-80f2-9a400f4c2607)
+
