@@ -6,7 +6,7 @@ clc;
 clear;
 
 % Size of the domain
-L = 80;
+L = 80*pi;
 
 % Max time
 T = 200;
@@ -36,7 +36,7 @@ L =  D.^2 + D.^4;
 % Matrix to retain solution - Initial condition
 % Starting with rand gives rise to interesting
 % Dynamics
-Si = 0.1*randn(n,n);
+Si = randn(n,n);
 
 % Crank-Nicolson matrices and Corresponding Fourier
 % Transforms
@@ -58,8 +58,8 @@ for i=1:Nt
     Si=IA.*rhs;
     
     % Plot time evolution and account for periodic boundary
-    % Negate for aesthetics
-    imagesc(-real(ifftn(Si)));colormap autumn;axis off;
+    % Negate and rescale for aesthetics
+    imagesc(imresize(-real(ifftn(Si)),4));colormap hot;axis off;
     M = getframe;
 end
 
