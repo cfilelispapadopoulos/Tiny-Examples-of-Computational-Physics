@@ -33,8 +33,9 @@ t = linspace(0, T, Nt+1);
 Dx = 1i * kx;
 Dy = 1i * ky;
 D = sqrt(Dx.^2 + Dy.^2);
+
 % Linear Operator
-L = -((1 - r) * D.^2 + 2*D.^4 + D.^6);
+LL = -((1 - r) * D.^2 + 2*D.^4 + D.^6);
 
 % Matrix to retain solution - Initial condition
 % Starting with rand gives rise to interesting
@@ -43,8 +44,8 @@ Si = randn(n,n);
 
 % Crank-Nicolson matrices and Corresponding Fourier
 % Transforms
-A = ones(n,n) + 0.5*dt*L;
-B = ones(n,n) - 0.5*dt*L;
+A = ones(n,n) + 0.5*dt*LL;
+B = ones(n,n) - 0.5*dt*LL;
 IA = A.^-1;
 Si = fftn(Si);
 Nn = -0.5*fftn(abs(ifftn(Dx.*Si).^2+(ifftn(Dy.*Si)).^2));
