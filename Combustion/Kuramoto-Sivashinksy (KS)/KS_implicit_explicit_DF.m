@@ -1,3 +1,7 @@
+% Solution of Kuramoto - Sivashinsky equation
+% In 1D periodic domain, using Finite Differences
+% and Simple IMEX (Implicit - Explicit) integration scheme
+
 clc;
 clear;
 

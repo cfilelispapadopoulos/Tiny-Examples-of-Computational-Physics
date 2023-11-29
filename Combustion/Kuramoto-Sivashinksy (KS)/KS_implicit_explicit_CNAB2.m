@@ -1,3 +1,7 @@
+% Solution of Kuramoto - Sivashinsky equation
+% In 1D periodic domain, using Finite Differences
+% and CNAB2 integration scheme
+
 clc;
 clear;
 
