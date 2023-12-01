@@ -28,3 +28,6 @@ $$f(\mathcal{L_{j,j}})=\frac{1}{2\pi i}\oint_{\Gamma_j} f(z)(z-\mathcal{L_{j,j}}
 The path $\Gamma_k$ is chosen as the unit circle centered at a diagonal element $\mathcal{L_{k,k}}$ (integrand pole), $\Gamma_k=( \mathcal{L_{j,j}}+e^{2\pi i z},0 < z \leq 1 )$. Thus, the path integrals take the form:
 $$f(\mathcal{L_{j,j}})=\int_0^1 f \left( \mathcal{L_{j,j}}+e^{2\pi i z} \right)dz \approx \frac{1}{M} \sum_{\ell=1}^M f\left( \mathcal{L_{j,j}}+e^{2\pi i \ell / M} \right)$$.
 In practice, values 16, 32 or 64 are sufficient to achieve accuracy close to machine precision. The integration has to be performed for 4 different functions corresponding to the three coefficients $f_u$, $f_{ab}$ and $f_c$ as well as the term $\mathcal{L}^{-1}(e^{\mathcal{L}\delta t/2}-I)$ which is required for the computation of the intermediate solution values $a_n$, $b_n$ and $c_n$.
+For an initial condition $u_0$, drawn from a uniform random distribution in the interval $[-1,1]$, residing in the domain $[0,8]^2$ and a time interval $t\in[0,8]$ with $\delta t = 8/1024$, the solution of the Cahn-Hilliard PDE is as follows:
+![cahn](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/ba128a49-344a-4fb8-8efa-8c042bdc653b)
+
