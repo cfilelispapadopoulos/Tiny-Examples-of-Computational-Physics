@@ -1,6 +1,6 @@
 % Solution of the Cahn-Hiliard
 % In 2D doubly periodic domain, using FFT
-% and CNAB2 integration scheme
+% and ETDRK4 integration scheme
 
 clc;
 clear;
