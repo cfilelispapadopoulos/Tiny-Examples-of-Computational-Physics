@@ -5,7 +5,7 @@ where $\epsilon$ is a bifurcation parameter and $N(u)$ is a smooth nonlinear fun
 $$\frac{\vartheta u}{\vartheta t}=L(u)+N(u)$$
 with
 $$L(u)=-(\Delta+1)^2$$ and $$N(u)=\epsilon u - u^3.$$
-This splitting better describes the equilibrium dynamics ($\frac{\vartheta u}{\vartheta t}=0,t\rarrow \infty$) and has been adopted from the [Kyle Novak's book on Scientific Computing](https://www.mathworks.com/academia/books/numerical-methods-for-scientific-computing-novak.html). The application of the modified ETDRK4 method is similar to the Cahn - Hilliard case (in folder Fluid Dynamics/Phase_Separation).
+This splitting better describes the equilibrium dynamics ($\frac{\vartheta u}{\vartheta t}=0,t\rightarrow \infty$) and has been adopted from the [Kyle Novak's book on Scientific Computing](https://www.mathworks.com/academia/books/numerical-methods-for-scientific-computing-novak.html). The application of the modified ETDRK4 method is similar to the Cahn - Hilliard case (in folder Fluid Dynamics/Phase_Separation).
 
 A graphical representation of the solution is as follows:
 ![sw](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/e023de19-3747-41f8-8f09-66dddcef18d0)
