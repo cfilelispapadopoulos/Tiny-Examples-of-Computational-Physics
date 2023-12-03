@@ -32,3 +32,4 @@ For an initial condition $u_0$, drawn from a uniform random distribution in the 
 
 ![cahn](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/ba128a49-344a-4fb8-8efa-8c042bdc653b)
 
+The code can be naturally extended to 3D.
