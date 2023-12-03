@@ -92,6 +92,6 @@ for i = 1 : Nt
     imagesc(imresize(-real(ifftn(v)),4));colormap hot;
     pbaspect([2*Lx/max(Lx,Ly) 2*Ly/max(Lx,Ly) 1]);axis off;
     % Getframe is used to smooth out plotting
-    M = getframe;
+    MM = getframe;
  end
 
