@@ -52,7 +52,6 @@ LL = - epsilon2*D.^4+alpha*D.^2;
 % Starting with rand gives rise to interesting
 % Dynamics
 Si = -1+2*rand(ny,nx,nz);
-% Si = repmat(Si,1,1,nz);
 
 % ETD RK4 required quantities
 E = exp ( dt * LL );
@@ -60,7 +59,7 @@ E2 = exp ( dt * LL / 2.0 );
 M = 32;
 
 % Compute roots of unity
-r = 2*exp ( 1i * pi * ( (1:M) - 0.5 ) / M );
+r = exp ( 1i * pi * ( (1:M) - 0.5 ) / M );
 
 % Fourier transform of initial condition
 v = fftn(Si);
