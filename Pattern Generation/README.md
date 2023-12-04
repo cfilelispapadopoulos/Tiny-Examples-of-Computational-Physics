@@ -9,3 +9,5 @@ This splitting better describes the equilibrium dynamics ($\frac{\vartheta u}{\v
 
 A graphical representation of the solution is as follows:
 ![sw](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/e023de19-3747-41f8-8f09-66dddcef18d0)
+
+The code naturally extends to 3D.
