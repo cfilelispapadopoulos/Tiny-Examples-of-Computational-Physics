@@ -24,8 +24,17 @@ where the discrete operators are defined as $D\approx \nabla$ and $D^2 \approx \
 $$A=\big(\Delta t^{-1} - \frac{1}{2Re} D^2\big),$$
 $$B=\big(\Delta t^{-1} + \frac{1}{2Re} D^2\big).$$
 Thus, equations (3) and (4) become:
-$$A \vec{u}^\star = -\frac{1}{2} D P^t+B\vec{u}^t-\frac{3}{2}H^t+\frac{1}{2}H^{t-1},$$
+$$A \vec{u}^\star = -\frac{1}{2} D P^t+B\vec{u}^t-\frac{3}{2}H^t+\frac{1}{2}H^{t-1}, (5)$$
 $$A(\vec{u}^{t+1}-\vec{u}^\star)=-\frac{1}{2} D P^{t+1}.$$
 The last equation for $t \rightarrow t-1$ becomes:
-$$A(\vec{u}^{t}-\big(\vec{u}^\star \big)^{-1})=-\frac{1}{2} D P^{t},$$
-where $\big(\vec{u}^\star \big)^{-1}$ denotes the intermediate solution at a previous time step.
+$$A(\vec{u}^{t}-\vec{u}^{\star-1})=-\frac{1}{2} D P^{t},$$
+where $\vec{u}^{\star-1}$ denotes the intermediate solution at a previous time step. We can substitute $D P^{t}$ in equation (5):
+$$A \vec{u}^\star = A(\vec{u}^{t}-\vec{u}^{\star-1})+B\vec{u}^t-\frac{3}{2}H^t+\frac{1}{2}H^{t-1},$$
+or
+$$\vec{u}^\star = \vec{u}^{t}-\vec{u}^{\star-1}+A^{-1}\big(B\vec{u}^t-\frac{3}{2}H^t+\frac{1}{2}H^{t-1}\big).$$
+Then solution at the next time step can be computed using equation (2). This equation requires that the divergence of the solution should be equal to zero. We can achieve that by a projection of the form,$
+$$\vec{u}^{t+1}=\vec{u}^\star- \nabla \Delta^{-1} (\nabla \cdot \vec{u}^\star).$$
+which is often referred in literature as [Chorin's projection method](https://en.wikipedia.org/wiki/Projection_method_(fluid_dynamics)). Technically, this projection removes the part of $\vec{u}^\star$ which is colinear to $\nabla$, thus rendering the solution $\vec{u}^{t+1}$ perpendicular to $\nabla$.
+
+Solution of the Navier - Stokes equation modeling the Kelvin - Helmholtz instability in 2D at some time step:
+![ns](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/8a450be7-592b-42fc-886d-33b8d46eaa4a)
