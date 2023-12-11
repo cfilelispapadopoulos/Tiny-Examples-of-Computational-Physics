@@ -45,7 +45,7 @@ $$\mathcal{N}_x^t=\mathcal{F} \left( \mathcal{F}^{-1}(U_x^t) \odot \mathcal{F}^{
 $$\mathcal{N}_y^t=\mathcal{F} \left( \mathcal{F}^{-1}(U_y^t) \odot \mathcal{F}^{-1}(D_x \odot U_y^t) + \mathcal{F}^{-1}(U_x^t) \odot \mathcal{F}^{-1}(D_y \odot U_y^t) \right),$$
 $$U^{t+1}_x=U^\star_x- D_x \odot D^{-2} \odot (D_x \odot U^\star_x+D_y \odot U^\star_y),$$
 $$U^{t+1}_y=U^\star_y- D_y \odot D^{-2} \odot (D_x \odot U^\star_x+D_y \odot U^\star_y).$$
-The frequencies corresponding to the two spatial dimensions are: $k_x=\frac{2\pi}{\ell_x}j_x$ and $k_y=\frac{2\pi}{\ell_y}j_y$ with $jx=-n_x/2+1,...,n_x/2$ and $jx=-n_y/2+1,...,n_y/2$, respectively. The number of intervals for the discretization is denoted as $n_x$ and $n_y$ for the $x$ and $y$ directions, respectively. It should be mentioned that due to the diagonal nature of the discrete derivative operators the inversion of matrix $A$ is performed by element.
+The frequencies corresponding to the two spatial dimensions are: $k_x=\frac{2\pi}{\ell_x}j_x$ and $k_y=\frac{2\pi}{\ell_y}j_y$ with $j_x=-n_x/2+1,...,n_x/2$ and $j_y=-n_y/2+1,...,n_y/2$, respectively. The number of intervals for the discretization is denoted as $n_x$ and $n_y$ for the $x$ and $y$ directions, respectively. It should be mentioned that due to the diagonal nature of the discrete derivative operators the inversion of matrix $A$ is performed by element.
 
 Solution of the Navier - Stokes equation modeling the Kelvin - Helmholtz instability in 2D at some time step:
 ![ns](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/8a450be7-592b-42fc-886d-33b8d46eaa4a)
