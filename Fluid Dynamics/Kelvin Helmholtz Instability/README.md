@@ -67,8 +67,8 @@ $$Q^{n+1}=Q^n-\left(T_2 \left(Q^n,\frac{\Delta t}{h_y}u_2^n \right)+T_1 \left(Q^
 with $h_x=\ell_x/n_x$, $h_y=\ell_y / n_y$ ($n_x, n_y$ denote the number of intervals accross each dimension) and
 $$T_1(Q,s)=s \odot (Q_{:,j}-Q_{:,j+1})-\frac{1}{2} s\odot(1-s)\odot((Q_{:,j}-Q_{:,j+1})+(Q_{:,j}-Q_{:,j-1})),$$
 $$T_2(Q,s)=s \odot (Q_{i,:}-Q_{i+1,:})-\frac{1}{2} s\odot(1-s)\odot((Q_{i,:}-Q_{i+1,:})+(Q_{i,:}-Q_{i-1,:})).$$
-The differences between the lines and columns of $Q$ can be easily handle due to the doubly periodic domain. The initial conditions chosen for the 2D flow are adopted by [Novak](https://www.equalsharepress.com/media/NMFSC.pdf) ($\ell_x=2$,$\ell_y=2$):
-$$u_1(x,y)=0.25(2+sin(2\pi x))(0.5+0.5tanh(10-20|y-1|)),$$
+The differences between the lines and columns of $Q$ can be easily handle due to the doubly periodic domain. The initial conditions chosen for the 2D flow are adopted by [Novak](https://www.equalsharepress.com/media/NMFSC.pdf) ($\ell_x=2,\ell_y=2$):
+$$u_1(x,y)=(1+0.5sin(\ell_x \pi x))(0.5+0.5tanh(10-20|1-2*y/(\ell_y)|)),$$
 $$u_2(x,y)=0.$$
 Initially, the velocities across the $y$ axis are set to zero. Thus, only the velocities in the $x$ axis are considered. Thus, we can choose the initial values for the tracer particles equal to $Q^0(x,y)=0.5+0.5 tanh(10-20|y-1|)$ in order to separate them (in value and in color) only with respect to their position in the $y$ axis. This choice creates lines, initially, only towards the $y$ direction. Solution of the Navier - Stokes equation modeling the Kelvin - Helmholtz instability in 2D at some time step (with $Re=1000$, $n_t=3000$, $n_x=256$, $n_y=256$):
 ![ns](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/3198a731-6175-426d-856e-334f9bdbd89f)
