@@ -3,24 +3,29 @@
 % Rayleigh Taylor instability
 % using FFT and CNAB2
 
+% Select plot type
+% pltype = 0 -> Stream function
+% pltype = 1 -> Tracer
+pltype = 1;
+
 % Size of domain
 Lx = 2;
 Ly = 2;
 
 % Number of points for discretization
-nx = 128;
-ny = 128;
+nx = 256;
+ny = 256;
 dx = Lx / nx;
 dy = Ly / ny;
 
 % Reynolds number
-Re = 1e3;
+Re = 1e4;
 
 % Maximum time
 T = 4;
 
 % Number of time steps
-Nt = 2028;
+Nt = 3000;
 
 % Frequencies
 klinx = (2.0 * pi / Lx) .* [0:nx/2,-nx/2+1:-1];
@@ -49,7 +54,7 @@ IA = A.^-1;
 
 % Initialize matrices
 % Velocities across x
-Q = 0.5 + 0.5 * tanh(10-20*abs(1-2*y/Ly));
+Q = (0.5 + 0.5 * tanh(10-20*abs(1-2*y/Ly)));
 um1 = fftn((Q).*(1+0.5*sin(Lx*pi*x)));
 us = um1;
 u = um1;
@@ -94,8 +99,12 @@ for i=1:Nt
     u = us - Dx .* phi;
     v = vs - Dy .* phi;
     
+    % Plot result and drawnow
+    if pltype == 0
+        Q = -real(ifftn((Dy.*u-Dx.*v)./D2));
+    end
     contour(x,y,Q);colormap hot;xlabel('x');ylabel('y');
-    MM = getframe;
+    drawnow
 end
 
 % Convective terms
