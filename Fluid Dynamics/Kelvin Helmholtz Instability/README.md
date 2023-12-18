@@ -7,7 +7,7 @@ where $P$ is the pressure, $Re$ is the [Reynolds number](https://en.wikipedia.or
 $$\frac{D\rho}{Dt}+\rho (\nabla \vec{u})=0,$$
 by considering that along the flow line the density is constant in an incompressible fluid:
 $$\frac{D\rho}{Dt}=0 \rightarrow \nabla \cdot u = 0$$
-The operator $\frac{D}{Dt}$ is the [material or sustantive derivative](https://en.wikipedia.org/wiki/Material_derivative) and is defined as follows:
+The operator $\frac{D}{Dt}$ is the [material or substantive derivative](https://en.wikipedia.org/wiki/Material_derivative) and is defined as follows:
 $$\frac{D}{Dt}=\frac{\vartheta}{\vartheta t}+\vec{u}\cdot \nabla$$
 defined for any tensor field depending on position and time coordinates only. In order to solve the Incompressible Navier - Stokes equation we will adopt the approach presented by [Novak](https://www.equalsharepress.com/media/NMFSC.pdf). Initially, an Implicit - Explicit (IMEX) scheme, namely [Crank - Nicolson / Adams - Bashforth (CNAB)](https://www.sciencedirect.com/science/article/pii/S016892741730226X) approach is applied to the conservation of momentum equation:
 $$\frac{\vartheta \vec{u}}{\vartheta{t}}=L(\vec{u})+N(\vec{u}),$$
