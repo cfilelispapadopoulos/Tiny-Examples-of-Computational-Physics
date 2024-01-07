@@ -15,4 +15,9 @@ and
 $$\nabla \times\frac{\vartheta \vec{u}}{\vartheta t}=\frac{\vartheta \vec{w}}{\vartheta t}.$$
 Thus, equation (1) takes the form:
 $$\frac{\vartheta \vec{w}}{\vartheta t}=\frac{1}{Re} \Delta \vec{w}-(\vec{u} \cdot \nabla) \vec{w},$$
-which, in practice, expresses the conservation of angular momentum. This formulation is advantageous, since it implicitly satisfies the incompressibility (conservation of mass or equation (2)).
+which, in practice, expresses the conservation of angular momentum. This formulation is advantageous, since it implicitly satisfies the incompressibility (conservation of mass or equation (2)). We can compute the velocities through the stream function $\psi$:
+$$\vec{u} = \nabla^\perp \psi = \left( \frac{\vartheta \psi}{\vartheta y},-\frac{\vartheta \psi}{\vartheta x} \right)=(u_1,u_2)$$
+and taking the second derivative of the stream function $\psi$ we obtain:
+$$\nabla^2 \psi = \frac{\vartheta^2 \psi}{\vartheta x^2}+\frac{\vartheta^2 \psi}{\vartheta y^2}=-\frac{\vartheta u_2}{\vartheta x}+\frac{\vartheta u_1}{\vartheta y}=-w$$
+where $w$ is scalar such that $\vec{w} = w\hat{z}$, since the velocity vector is two dimensional. Using the stream function we can prove that incompressibility is satfisfied implicitly:
+$$\nabla \cdot \vec{u} = \frac{\vartheta u_1}{\vartheta x}+\frac{\vartheta u_2}{\vartheta y}=\frac{\vartheta^2 \psi}{\vartheta x \vartheta y}-\frac{\vartheta^2 \psi}{\vartheta y \vartheta x}=0.$$
