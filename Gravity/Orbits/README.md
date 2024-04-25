@@ -4,7 +4,7 @@
 The [three body problem](https://en.wikipedia.org/wiki/Three-body_problem) is a famous problem in classical mechanics concerning the prediction of trajectories of three point masses knowing the initial positions and velocities. The bodies interact with each other only through mutual gravitational forces. This system exhibits chaotic behavior for most of the choices of initial conditions. Several researchers over the last 50 years, apart from the works of Euler and Lagrange, have proven different families of stable solutions such as the work of [Ivan Hristov et al](https://arxiv.org/abs/2308.16159) in 2023 or [Xiaoming Li and Shijun Liao](https://arxiv.org/abs/1705.00527) in 2017.
 
 Here we will focus on a the stable system of the Sun - Earth - Moon which will be described using the [Lagrangian mechanics](https://en.wikipedia.org/wiki/Lagrangian_mechanics) approach in order to estimate the maximum distance between Sun and Earth and the trajectories of Earth and Moon. Initially, we have to define the Lagrangian of the system in Cartesian coordinates:
-$$L(t,\vec{x},\vec{y},\vec{\dot{x}},\vec{\dot{y}}) = T(\vec{\dot{x}},\vec{\dot{y}})-V(\vec{r})$$
+$$L(t,\vec{x},\vec{y},\vec{\dot{x}},\vec{\dot{y}}) = T(\vec{\dot{x}},\vec{\dot{y}})-V(\vec{x},\vec{y})$$
 where $\vec{x},\vec{y}$ are vectors retaining the (time-dependent) coordinates, for all bodies. The Kinetic Energy of the system is of the form:
 $$T = \frac{1}{2} m_1 (\dot{x}^2_1(t)+\dot{y}^2_1(t))+\frac{1}{2} m_2 (\dot{x}^2_2(t)+\dot{y}^2_2(t))+\frac{1}{2} m_3 (\dot{x}^2_3(t)+\dot{y}^2_3(t))=\frac{1}{2} \sum_{i=1}^3 \left[m_i (\dot{x}^2+\dot{y}^2) \right].$$
 The potential energy of the three body system is of the form:
