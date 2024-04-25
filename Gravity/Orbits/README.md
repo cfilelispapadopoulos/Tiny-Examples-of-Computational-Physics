@@ -36,7 +36,7 @@ $$\dot{u}_2= G\frac{m_1}{|r_1-r_2|^3}(y_1-y_2)-G\frac{m_3}{|r_2-r_3|^3}(y_2-y_3)
 $$\dot{u}_3= G\frac{m_1}{|r_1-r_3|^3}(y_1-y_3)+G\frac{m_2}{|r_2-r_3|^3}(y_2-y_3)$$
 
 We can solve this system using an integrator of the MATLAB environment such as the [ode45](https://uk.mathworks.com/help/matlab/ref/ode45.html). The masses of the Sun, Earth and Moon are, respectively, as follows:
-$$m_1 = 1.989\times 10^30\ kg, m_2 = 5.972\times 10^24\ kg, m_3 = 7.34767309\times 10^22\ kg$$
+$$m_1 = 1.989\times 10^{30}\ kg, m_2 = 5.972\times 10^{24}\ kg, m_3 = 7.34767309\times 10^{22}\ kg$$
 The position of the Earth at $t=0$, relative to the Sun positioned at the origin $x_1(0)=0\ km,y_1(0)=0\ m$, is $x_2(0)=147098074\times 10^3\ m,y_2(0)=0\ m$. The position of the Moon relative to the Earth is at $t=0$ is $x_3(0) = 384400\times 10^3\ m, y_3 (0) = 0\ m$. These positions correspond to the case where the Earth is closest to the Sun. The corresponding velocities of the bodies at $t=0$ are $v_1 (0) = 0\ m/s, v_2 (0) = 0\ m/s, v_3(0) = 0\ m/s$ and $u_1(0)=0\ m/s, u_2(0)=30.3\times 10^3\ m/s, u_3(0) = 1022\ m/s$. It should be noted that the velocity of the Moon is relative to the Earth, while the velocity of the Earth is relative to the Sun.
 
 The results of the simulation are:
