@@ -1,5 +1,5 @@
 clear;
-% clc;
+clc;
 
 % Constants
 m = [1.989e30;5.972e24;7.34767309e22];
