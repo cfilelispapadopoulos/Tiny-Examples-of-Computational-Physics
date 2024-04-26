@@ -1,5 +1,5 @@
 clear;
-% clc;
+clc;
 
 % Constants
 G = 6.67428e-11;
