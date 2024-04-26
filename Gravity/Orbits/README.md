@@ -67,3 +67,5 @@ The main idea is computing the trajectories for several (incrementally larger) i
 The circle in the center represents the Sun, while the mass of the craft is chosen to be $500 kg$. The other constants are described in the MATLAB script. The script is flexible allowing for changes in the orbits, in the velocities, etc. A more complicated transfer orbit, with $\Delta v = 3871.83 m/s$, is shown below:
 
 ![traj](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/1cf6de59-a62a-4ccb-ba79-fc263542369e)
+
+It should be mentioned that the approach followed here for a shooting method is a trivial one and is based on brute force; more elaborate and powerful techniques exist in the literature.
