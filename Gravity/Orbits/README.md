@@ -45,3 +45,25 @@ The results of the simulation are:
 ![dist1](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/a1d7ed66-d444-461d-8644-20a1e3cf089d)
 
 The simulation leads to a maximum distance between Earth and Moon equal to $1.52551 \times 10^8\ km$, while the actual distance is $1.521\times 10^8\ km$, which leads to an estimation error of $0.3\\%$.
+
+## Hofmann transfer orbit and the shooting method
+The [Hofmann transfer obrit](https://en.wikipedia.org/wiki/Hohmann_transfer_orbit) is an orbital maneuver used to transfer a spacecraft or a satellite from one elliptic orbit of lower altitude, around a massive body, to another of higher altitude. The Hofmann transfer orbit is optimal in the sense of propelant required to accelerate the craft through two impulses, i.e. $\Delta v$, in order for it to reach the required velocity. In order to compute the two impulses $\Delta v_1$ and $\Delta v_2$ required for exiting the first orbit and entering the second, analytic formulas exist, such as the [vis-viva equation](https://en.wikipedia.org/wiki/Vis-viva_equation):
+$$v^2 = GM \left(\frac{2}{r} - \frac{1}{a}\right)$$
+where $G$ is the gravitational constant, $M$ is the mass of the body orbited by the craft, $r$ is the the distance between the centers of mass of the two bodies and $a$ is the length of the semi-major axis of the elliptic transfer trajectory.
+
+Here we will follow a different approach, and a little more general, leveraging the Shooting method to solve the system of ODEs derived from the Lagrangian:
+$$L = \frac{1}{2} m \left(\dot{r}^2+r^2\dot{\theta}^2 \right)+G \frac{mM}{r}$$
+with various different initial velocities, in order to pinpoint the trajectory between to prescribed points, that do not necessarily lie on the semi-major axis. After, application of the two Euler-Lagrange equations we have:
+$$\ddot{r}=r\dot{\theta}^2-G\frac{M}{r^2}$$
+$m r^2 \dot{\theta} = c$
+The second equation is the conservation of Angular momentum and by substitution to the first one we have:
+$$\ddot{r}=\frac{L^2}{m^2 r^3}-G\frac{M}{r^2}$$
+The solution of this equation can be performed as before with an integrator of the MATLAB environment such as the [ode45](https://uk.mathworks.com/help/matlab/ref/ode45.html). The initial and final point of the transfer are well known and the tangential velocities across these two trajectories can be computed at any point using Finite-Differences, e.g. at a point $r_i=r(t_i),\theta_i=\theta(t_i)$ of a trajectory:
+$$v_i \approx \frac{\theta_{i+1}-\theta_{i-1}}{t_{i+1}-t_{i-1}} r_i.$$
+The main idea is computing the trajectories for several (incrementally larger) initial velocities $v'_1 = v_1 + \Delta v_1$ and retain as an answer the one that is closer to the endpoint. The second impulse can be computed as $\Delta v_2 = v_2 - v'_2$, where $v_2$ is the velocity required at the prescribed point to retain the orbit, while $v'_2$ is the velocity that the craft attains after the transfer. Thus, technically two impulse burns are required in order to change orbit. For simplicity we do not consider any changes in mass caused by the impulses (which in reality require propellant). Moreover, we consider that the impulses (changes in velocity) are instant. It should be noted that the smaller the total $\Delta v = \Delta v_1 +\Delta v_2$ the more efficient the tranfer is. Thus, in the case of our approach if the beginning and ending of a transfer orbit lie on the semi - major axis then this is a Hohmann transfer orbit. We will denote the start and end points as percentages of the length of the total orbit. A Hofman orbit with total impulse $\Delta v=3572.61 m/s$ (marked with the red dashed line is as follows):
+
+![hofmann](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/d6985821-670c-4410-a102-89a4895b91d7)
+
+The circle in the center represents the Sun, while the mass of the craft is chosen to be $500 kg$. The other constants are described in the MATLAB script. The script is flexible allowing for changes in the orbits, in the velocities, etc. A more complicated transfer orbit is shown below:
+
+![traj](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/1cf6de59-a62a-4ccb-ba79-fc263542369e)
