@@ -64,6 +64,6 @@ The main idea is computing the trajectories for several (incrementally larger) i
 
 ![hofmann](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/d6985821-670c-4410-a102-89a4895b91d7)
 
-The circle in the center represents the Sun, while the mass of the craft is chosen to be $500 kg$. The other constants are described in the MATLAB script. The script is flexible allowing for changes in the orbits, in the velocities, etc. A more complicated transfer orbit is shown below:
+The circle in the center represents the Sun, while the mass of the craft is chosen to be $500 kg$. The other constants are described in the MATLAB script. The script is flexible allowing for changes in the orbits, in the velocities, etc. A more complicated transfer orbit, with $\Delta v = 3871.83 m/s$, is shown below:
 
 ![traj](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/1cf6de59-a62a-4ccb-ba79-fc263542369e)
