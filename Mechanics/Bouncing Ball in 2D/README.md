@@ -9,9 +9,7 @@ where $m_p$ is the mass of each point $m_p = \frac{m}{N}$, $k$ is the spring coe
 The equations of motion for the center of mass $cm$ and every point on the circle are integrated using the Leapfrom integrator in the Kick-Drift-Kick (KDK) form (second order accurate):
 
 $$ v_{i+1/2} = v_{i}+a_i \frac{\Delta t}{2},$$
-
 $$ x_{i+1} = x_{i}+v_{i+1/2} \Delta t,$$
-
 $$ v_{i+1} = v_{i+1/2}+a_{i+1} \frac{\Delta t}{2}$$
 
 The KDK form has the additive advantage that it is stable for variable time stepping apart from the stability for oscillatory motion. Variable timestepping is required to avoid breakdowns in cases of large accelerations and velocities.
@@ -28,7 +26,7 @@ $$\vec{a}_{cm}=\vec{a}_g=(0,-g)$$
 
 where $g=9.81\frac{m}{s^2}$ is the acceleration of gravity. The points on the ball have another type of acceleration if for some reason they are displaced, either closer or away, more or less than the radius $r$, from the position of the center of mass (e.g. from a collision). This acceleration stems from Hooke's Law and the fact that we are treating them as points attached to massless damped springs. Thus, for a point $p$ that, at some point in time, is further away than rest position $r$, its acceleration is:
 
-$$\vec{a}_p=\vec{a}_g-\frac{k}{M}(||\Delta\vec{x}_p||_2-r) \frac{\Delta\vec{x}_p}{||\Delta\vec{x}_p||_2}-\frac{b}{M}||\Delta\vec{v}_p||_2 \frac{\Delta\vec{v}_p}{||\Delta\vec{v}_p||_2}$$,
+$$\vec{a}_p=\vec{a}_g - \frac{k}{M}(||\Delta\vec{x}_p||_2-r) \frac{\Delta\vec{x}_p}{||\Delta\vec{x}_p||_2} - \frac{b}{M}||\Delta\vec{v}_p||_2 \frac{\Delta\vec{v}_p}{||\Delta\vec{v}_p||_2},$$
 
 where
 
@@ -36,7 +34,7 @@ $$\Delta\vec{x_p}=\vec{x_p}-\vec{x}_{cm}$$
 
 and
 
-$$\Delta\vec{v_p}=\vec{v_p}-\vec{v}_{cm}$$.
+$$\Delta\vec{v_p}=\vec{v_p}-\vec{v}_{cm}.$$
 
 The vectors and $\vec{x_p}$, $\vec{v_p}$ are the absolute position and velocity of a point (with respect to the box) while $\Delta\vec{x_p}$ and $\Delta\vec{v_p}$ are the relative position of a point with respect to the center of mass (where the spring is attached). It should be noted that the reaction force to the center of mass is not considered for simplicity. The above formula is impractical and requires tracking positions, velocities and accelerations with respect to the box. The process of updating these can be simplified by separating the frames of reference.
 
@@ -51,22 +49,22 @@ $$m_p\vec{a_p}=-k(\vec{x}-\vec{x_0})-b\vec{v_p}$$
 
 where $\vec{x_0}$ is the vector corresponding to the rest length of the springs with respect to the initial position of the center of mass which in its frame of reference lies always at (0,0). All quantities in the above equation are defined with respect to the reference frame corresponding to the initial position of the center of mass. In case some of the springs are compressed or elongated we should account for the net reaction force at the point where they are mounted (0,0). This can be computed as:
 
-$$\vec{F_r}=\sum_p m_p \vec{a_p}$$.
+$$\vec{F_r}=\sum_p m_p \vec{a_p}.$$
 
 Thus, thus upon collision the springs push back at the mounting point.
 
 ## Collisions with the Walls
 All collisions, since the ball is deformable, are inellastic. The process of modelling collisions is straightforward, following the above simplifications. When the ball meets with the wall the points that touch the wall have velocity equal to zero and position equal to:
 
-$$2 y_{max} - x_2 - 2 (x_{cm})_2$$,
+$$2 y_{max} - x_2 - 2 (x_{cm})_2,$$
 
-$$2 y_{min} - x_2 - 2 (x_{cm})_2$$,
+$$2 y_{min} - x_2 - 2 (x_{cm})_2,$$
 
 for the upper and lower walls while for the side walls, analogously:
 
-$$2 x_{max} - x_1 - 2 (x_{cm})_1$$,
+$$2 x_{max} - x_1 - 2 (x_{cm})_1,$$
 
-$$2 x_{min} - x_1 - 2 (x_{cm})_1$$.
+$$2 x_{min} - x_1 - 2 (x_{cm})_1.$$
 
 The bodies are stuck to the wall until the reaction force of all the corresponding springs becomes greated than gravity, in order to accelerate the body to the opposite direction. Thus, collisions are affected significantly by the constants of the springs.
 
