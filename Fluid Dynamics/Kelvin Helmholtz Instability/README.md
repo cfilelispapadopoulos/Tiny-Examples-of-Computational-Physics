@@ -6,7 +6,7 @@ $$\frac{\vartheta \vec{u}}{\vartheta t}=-\nabla P + \frac{1}{Re} \Delta \vec{u} 
 
 $$\nabla \cdot u = 0,          (2)$$
 
-where $P$ is the pressure, $Re$ is the [Reynolds number](https://en.wikipedia.org/wiki/Reynolds_number) and $\vec{u} = (u_1,u_2)$ is the velocity vector with components $u_1(x,y,t)$ and $u_2(x,y,t)$ across the $x\in[0,\ell_x]$ and $y\in[0,\ell_y]$ directions respectively. The first equation is the conservation of momentum, while the second, acting as a constraint, is the concervation of mass. The constraint is derived from the mass continuity equation (Lagrangian description):
+where $P$ is the pressure, $Re$ is the [Reynolds number](https://en.wikipedia.org/wiki/Reynolds_number) and $\vec{u} = ( u_1,u_2 )$ is the velocity vector with components $u_1(x,y,t)$ and $u_2(x,y,t)$ across the $x\in[0,\ell_x]$ and $y\in[0,\ell_y]$ directions respectively. The first equation is the conservation of momentum, while the second, acting as a constraint, is the concervation of mass. The constraint is derived from the mass continuity equation (Lagrangian description):
 
 $$\frac{D\rho}{Dt}+\rho (\nabla \vec{u})=0,$$
 
