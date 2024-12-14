@@ -11,7 +11,7 @@ with
 
 $$L(u)=-(\Delta+1)^2 u$$ and $$N(u)=\epsilon u - u^3.$$
 
-This splitting better describes the equilibrium dynamics ($\frac{\vartheta u}{\vartheta t}=0,t\rightarrow \infty$, especially in cases where the Strang decomposition is considered in order to solve the PDE) and has been adopted from the [Kyle Novak's book on Scientific Computing](https://www.mathworks.com/academia/books/numerical-methods-for-scientific-computing-novak.html). It should be noted that a decomposition of the form $L(u)=-(\Delta+1)^2 u+\epsilon u, N(u)=-u^3$ poses no issue while solving the PDE with the modified ETDRK4 scheme. The application of the modified ETDRK4 method is similar to the Cahn - Hilliard case (in folder Fluid Dynamics/Phase_Separation).
+This splitting better describes the equilibrium dynamics $(\frac{\vartheta u}{\vartheta t}=0,t\rightarrow \infty)$, especially in cases where the Strang decomposition is considered in order to solve the PDE) and has been adopted from the [Kyle Novak's book on Scientific Computing](https://www.mathworks.com/academia/books/numerical-methods-for-scientific-computing-novak.html). It should be noted that a decomposition of the form $L(u)=-(\Delta+1)^2 u+\epsilon u, N(u)=-u^3$ poses no issue while solving the PDE with the modified ETDRK4 scheme. The application of the modified ETDRK4 method is similar to the Cahn - Hilliard case (in folder Fluid Dynamics/Phase_Separation).
 
 A graphical representation of the solution is as follows:
 
