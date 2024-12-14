@@ -31,8 +31,8 @@ ind1 = min(max(1,round(per1*length(t1))),round(per1*length(t1)));
 ind2 = min(max(1,round(per2*length(t2))),round(per2*length(t2)));
 
 % Get velocities
-v1 = (th1(ind1+1)-th1(ind1-1))/(t1(ind1+1)-t1(ind1-1))*r1(ind1);
-v2 = (th2(ind2+1)-th2(ind2-1))/(t2(ind2+1)-t2(ind2-1))*r2(ind2);
+v1 = .5 * (th1(ind1+1)-th1(ind1-1))/(t1(ind1+1)-t1(ind1-1))*r1(ind1);
+v2 = .5 * (th2(ind2+1)-th2(ind2-1))/(t2(ind2+1)-t2(ind2-1))*r2(ind2);
 
 % Plot beginning and ending of the transfer
 plot(r1(ind1)*cos(th1(ind1)),r1(ind1)*sin(th1(ind1)),'or');
