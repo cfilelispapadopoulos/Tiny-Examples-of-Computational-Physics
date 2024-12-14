@@ -12,15 +12,25 @@ Let us consider a bob of mass $M$ suspended from a wall using a massless thread 
 ![image](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/c6372223-a462-4823-bcca-ffe300393c40)
 
 The forces acting on the bob is gravity $(mg)$ and tension from the thread. From Newton's second law we have the following:
+
 $$F=ma=-mg sin\theta$$
+
 or equivalently:
-$$a=-gsin\theta \iff \frac{d^2 s}{dt^2}=-gsin\theta$$,
+
+$$a=-gsin\theta \iff \frac{d^2 s}{dt^2}=-gsin\theta,$$
+
 where $s$ denotes the arc length. But $s=L\theta$, so we can rewrite the above equation as follows:
-$$\frac{d^2\theta}{dt^2}=-\frac{g}{L}sin\theta \iff \ddot{\theta}=-\frac{g}{L}sin\theta=f(t,\theta)$$.
+
+$$\frac{d^2\theta}{dt^2}=-\frac{g}{L}sin\theta \iff \ddot{\theta}=-\frac{g}{L}sin\theta=f(t,\theta).$$
+
 If we avoid linearization using the small angle approximation $\theta\approx sin\theta$, then the above ODE can be solved using numerical methods, such as the [Leapfrom Kick-Drift-Kick](https://en.wikipedia.org/wiki/Leapfrog_integration) scheme, which is advantageous (in terms of stability) for oscillatory motion. Thus, we have:
+
 $$\omega_{i+1/2}=\omega_i+f(t_i,\theta_i)\frac{\Delta t}{2},$$
+
 $$\theta_{i+1}=\theta_i+\omega_{i+1/2}\Delta t,$$
+
 $$\omega_{i+1}=\omega_{i+1/2}+f(t_{i+1},\theta_{i+1})\frac{\Delta t}{2},$$
+
 where $a_i=\ddot{\theta}_i=f(t_i,\theta_i)$ is the angular acceleration during the $i$-th time step, $\omega_i=\dot{\theta}_i$ is the angular velocity during the $i$-th time step and $\Delta t$ is the time step. The solution at each time step is produced by evaluating the three last equations at each time step until the maximum prescribed time. The pendulum performs simple harmonic motion.
 
 ## Not so simple not so aerodynamic pendulum
@@ -29,11 +39,17 @@ This case is similar to the above with the only difference being the addition of
 ![image](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/f0c4a5f4-91ae-4d2d-b819-e87ed60f79b5)
 
 Thus, analogously the differential equation has the following form:
+
 $$\frac{d^2\theta}{dt^2}=-\frac{g}{L}sin\theta - sgn(\omega) \frac{L}{2M} \rho C_d A \omega^2 \iff \ddot{\theta}=f(t,\theta,\omega)$$,
+
 where $sgn(x)$ denotes the [sign function](https://en.wikipedia.org/wiki/Sign_function) and $sgn(\omega)$ ensures that the drag force points always in the opposite direction of the tangential velocity $v=\omega L$. Using again the Leapfrom KDK scheme, as above, we can solve the ODE:
+
 $$\omega_{i+1/2}=\omega_i+f(t_i,\theta_i,\omega_i)\frac{\Delta t}{2},$$
+
 $$\theta_{i+1}=\theta_i+\omega_{i+1/2}\Delta t,$$
+
 $$\omega_{i+1}=\omega_{i+1/2}+f(t_{i+1},\theta_{i+1},\omega_{i+1/2})\frac{\Delta t}{2}.$$
+
 It shoule be noted that in this case the pendulum performes damped harmonic motion.
 
 ## Double Pendulum
@@ -68,7 +84,6 @@ $$y_2 = y_1 - L_2 cos \theta_2$$
 Using the above equations and their first and second derivatives with respect to time along with the ODEs derived from Newton's second law, after some algebraic manipulation, we end up in the following equations:
 
 $$\ddot{\theta_1} = \frac{-g (2 M_1+M_2) sin\theta_1 -M_2 g sin (\theta_1 - 2 \theta_2)-2 sin(\theta_1 - \theta_2) M_2 (\dot{\theta_2}^2 L_2 + \dot{\theta_1}^2 L_1 cos (\theta_1 - \theta_2))}{L_1 (2 M_1+M_2-M_2 cos(2 \theta_1-2 \theta_2))}$$
-
 
 $$\ddot{\theta_1} = \frac{2 sin (\theta_1 - \theta_2)(\dot{\theta_1}^2 L_1 (M_1 + M_2)+g (M_1+M_2) cos \theta_1 + \dot{\theta_2}^2 L_2 M_2 cos(\theta_1 - \theta_2))}{L_2 (2 M_1+M_2-M_2 cos(2 \theta_1-2 \theta_2))}$$
 
