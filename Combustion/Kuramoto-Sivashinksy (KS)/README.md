@@ -35,19 +35,23 @@ Using the CNAB2 scheme the above equation would take the form:
 $$(I+0.5 \delta t D + 0.5 \delta t D2 )v^{t+1}=(I-0.5 \delta t D - 0.5 \delta t D2 )v^t+1.5 \delta t N(v^t) - 0.5 \delta t N(v^{t-1})$$.
 
 with $v_{-1}=v_{0}$. The 1D solution yields the following result:
+
 ![combustion](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/ed40e15f-a61a-4663-bf86-30eae5767111)
 
 The multi-dimensional equation is of the form:
 $$v_t+\Delta v + \Delta^2 v+0.5|\nabla v|^2=0.$$
 The solution of the 2D equation is performed through FFT in doubly periodic domain $[-L/2,L/2]^2$, utilizing the CNAB2 scheme described above. A plot of the solution in an intermediate timestep is the following:
+
 ![2d](https://github.com/cfilelispapadopoulos/Tiny-Examples-of-Computational-Physics/assets/137081674/e599d086-14a6-450e-80f2-9a400f4c2607)
 
 In order to solve the 2D equation we need to transform the derivatives into the frequency space as follows:
+
 $$v_t - (k_x^2+k_y^2) V_{k_x,k_y} +(k_x^2+k_y^2)^2 V_{k_x,k_y} + \mathcal{F}( 0.5 | (\mathcal{F}^{-1}(i k_x V_{k_x,k_y}))^2 + (\mathcal{F}^{-1}(i k_y V_{k_x,k_y}))^2|) = 0$$
 where $\mathcal{F}$ is the Fourier transform, $\mathcal{F}^{-1}$ is the inverse Fourier Transform and $V_{k_x,k_y}=v{x,y}$. The equation can be recast to CNAB2 form:
 $$(I-0.5 \delta t (k_x^2+k_y^2)+0.5 \delta t (k_x^2+k_y^2)^2) V_{k_x,k_y}^{t+1} = (I+0.5 \delta t (k_x^2+k_y^2)-0.5 \delta t (k_x^2+k_y^2)^2) V_{k_x,k_y}^{t} + 1.5 \delta t \mathcal{N}(V_{k_x,k_y}^{t}) - 0.5 \delta t \mathcal{N}(V_{k_x,k_y}^{t-1})$$
 
 with
+
 $$\mathcal{N}(V_{k_x,k_y}^t)=\mathcal{F}( 0.5 | (\mathcal{F}^{-1}(i k_x V_{k_x,k_y}^t))^2 + (\mathcal{F}^{-1}(i k_y V_{k_x,k_y}^t))^2|).$$
 
 The term $\delta t$ is the time step.
