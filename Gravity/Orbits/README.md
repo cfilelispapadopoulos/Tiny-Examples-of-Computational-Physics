@@ -83,7 +83,7 @@ $$\ddot{r}=\frac{L^2}{m^2 r^3}-G\frac{M}{r^2}$$
 
 The solution of this equation can be performed as before with an integrator of the MATLAB environment such as the [ode45](https://uk.mathworks.com/help/matlab/ref/ode45.html). The initial and final point of the transfer are well known and the tangential velocities across these two trajectories can be computed at any point using Finite-Differences, e.g. at a point $r_i=r(t_i),\theta_i=\theta(t_i)$ of a trajectory:
 
-$$v_i \approx \frac{\theta_{i+1}-\theta_{i-1}}{2(t_{i+1}-t_{i-1})} r_i.$$
+$$v_i \approx \frac{\theta_{i+1}-\theta_{i-1}}{t_{i+1}-t_{i-1}} r_i.$$
 
 The main idea is computing the trajectories for several (incrementally larger) initial velocities $v'_1 = v_1 + \Delta v_1$ and retain as an answer the one that is closer to the endpoint. The second impulse can be computed as $\Delta v_2 = v_2 - v'_2$, where $v_2$ is the velocity required at the prescribed point to retain the orbit, while $v'_2$ is the velocity that the craft attains after the transfer. Thus, technically two impulse burns are required in order to change orbit. For simplicity we do not consider any changes in mass caused by the impulses (which in reality require propellant). Moreover, we consider that the impulses (changes in velocity) are instant. It should be noted that the smaller the total $\Delta v = \Delta v_1 +\Delta v_2$ the more efficient the tranfer is. Thus, in the case of our approach if the beginning and ending of a transfer orbit lie on the semi - major axis then this is a Hohmann transfer orbit. We will denote the start and end points as percentages of the length of the total orbit. A Hofman orbit with total impulse $\Delta v=3572.61 m/s$ (marked with the red dashed line is as follows):
 
