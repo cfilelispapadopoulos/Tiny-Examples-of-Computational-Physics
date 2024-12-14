@@ -1,10 +1,10 @@
 ## Incompressible Navier - Stokes in Vorticity - Velocity formulation
 Let us consider the Incompresible Navier - Stokes equation:
 
-$$\frac{\vartheta \vec{u}}{\vartheta t}=-\nabla P + \frac{1}{Re} \Delta \vec{u} - (\vec{u} \cdot \nabla)  \vec{u},  (1)$$
-$$\nabla \cdot u = 0,  (2)$$
+$$\frac{\vartheta \vec{u}}{\vartheta t}=-\nabla P + \frac{1}{Re} \Delta \vec{u} - (\vec{u} \cdot \nabla)  \vec{u},     (1)$$
+$$\nabla \cdot u = 0,     (2)$$
 
-where $P$ is the pressure, $Re$ is the [Reynolds number](https://en.wikipedia.org/wiki/Reynolds_number) and  $\vec{u} = (u_1,u_2)$  is the velocity vector with components $u_1(x,y,t)$ and $u_2(x,y,t)$ across the $x\in[-\ell_x,\ell_x]$ and $y\in[-\ell_y,\ell_y]$ directions respectively. In this particular example we will consider the domain to be double periodic.
+where $P$ is the pressure, $Re$ is the [Reynolds number](https://en.wikipedia.org/wiki/Reynolds_number) and $\vec{u} = (u_1,u_2)$ is the velocity vector with components $u_1(x,y,t)$ and $u_2(x,y,t)$ across the $x\in[-\ell_x,\ell_x]$ and $y\in[-\ell_y,\ell_y]$ directions respectively. In this particular example we will consider the domain to be double periodic.
 
 Let us define the vorticity $\vec{w}=\nabla \times \vec{u}$ which is a vector quantity which is normal to the the plane of the flow. By taking the curl operator $(\nabla \times )$ of the conservation of momentum equation (1):
 
