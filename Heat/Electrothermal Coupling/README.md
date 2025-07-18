@@ -10,7 +10,7 @@ The considered integrated circuit is given in the Figure below.
 
 <img width="515" height="301" alt="icm" src="https://github.com/user-attachments/assets/63dfadea-41b1-4452-8873-0ca92e7a6590" />
 
-The IC is composed of three resistors, where the first one is connected, in series, to the other two which are connected in parallel. All three stainless steel resistors with electrical conductivity $\sigma_R^0=1.45\times 10^{-6} (S/m)$ lie on a substrate ($0.2 m \times 0.2 m$) with electrical conductivity $\sigma_S = 10^{-6} (S/m)$. All components are connected with copper electrical wire (red) with electrical conductivity $\sigma_W=5.8\times 10^7 (S/m)$.
+The IC is composed of three resistors, where the first one is connected, in series, to the other two which are connected in parallel. All three stainless steel resistors with [electrical conductivity](https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity) $\sigma_R^0=1.45\times 10^{-6} (S/m)$ lie on a substrate ($0.2 m \times 0.2 m$) with electrical conductivity $\sigma_S = 10^{-6} (S/m)$. All components are connected with copper electrical wire (red) with electrical conductivity $\sigma_W=5.8\times 10^7 (S/m)$.
 
 The conductivity of the wire as well as the substrate are considered to be independent of the temperature, while the conductivity of the resistors is considered to be varying with temperature:
 
@@ -48,7 +48,7 @@ Let us also define a control surface centered at a vertex $(i,j)$. Integrating o
 
 $$\int_{\Omega_{i,j}} \nabla \cdot (\sigma \nabla V) dA = 0 \Rightarrow \oint_{\partial \Omega_{i,j}} \sigma \nabla V \cdot n ds,$$
 
-where $\partial \Omega_{i,j}$ is the boundary aroung the volume (in our case a square) consisting of four faces (sides), namely East, West, North and South. For the east face (side) between vertices $(i,j)$ and $(i+1,j)$ the flux is defined as follows, using central differences:
+where $\partial \Omega_{i,j}$ is the boundary aroung the volume (in our case a square) consisting of four faces (sides), namely East, West, North and South. For the east face (side) between vertices $(i,j)$ and $(i+1,j)$ the flux (current density) is defined as follows, using central differences:
 
 $$J_x^{i+1/2,j}=-\sigma_{i+1/2,j} \frac{V_{i+1,j}-V_{i,j}}{\Delta x}$$
 
@@ -96,3 +96,49 @@ All conductivities appearing in the stencil are given by the equations used in t
 4. It is more suitable for PDEs that are expressed in divergence form $(\nabla \cdot F = S)$, such as those arising in Electrostatics, Heat conduction, Fluid dynamics and Groundwater flow.
 
 It should be noted that the quantities $\Delta x = \frac{L_x}{n_x}$ and $\Delta y=\frac{L_y}{n_y}$ are the mesh sizes corresponding to each axis.
+
+After computing the potential distribution the temperature field should be computed. This is going to be achieved by considering the steady-state thermal equation.
+
+One of the key differences of Flux conservative FD, as opposed to traditional FD, is that without boundary treatment the numerical scheme considers Neumann type boundary conditions, while traditional FD considers Dirichlet boundary conditions.
+
+The physical interpretation of homogeneous Neumann boundary conditions, for the electrical potential PDE, correspond to current density $j_n$ through the boundary:
+
+$$n\cdot \sigma (T) \nabla V = - j_n,$$
+
+while in the case of electrically insulated surface, such as the one considered here due to the substrate, the boundary conditions are as follows:
+
+$$n \cdot \nabla V = 0 \Rightarrow \frac{\partial V}{\partial n} = 0.$$
+
+In our setup there are also the voltage pads, where the voltage is known a priori. In the left part (positive side) of the domain these points that correspond to the pad in the boundary are considered to have voltage equal to $1$ (Dirichlet). On the right side (negative side), the known voltage of the pad is considered to be $0$ (Dirichlet). In order to enforce these boundaries to the coefficient matrix the rows corresponding to these points should be substituted with the corresponding rows of the identity matrix $I$ of the same order as the coefficient matrix. This ensures homogeneous Neumann boundaries everywhere on the sides of the domain except the positive and negative pads.
+
+# Steady-state thermal equation
+
+The steady-state thermal equation is considered instead of the transient one:
+
+$$\nabla \cdot (k(x,y) \cdot \nabla T) = - Q = - \sigma (x,y) |\nabla V|^2,$$
+
+where $k(x,y)$ in $(W/(m \cdot K))$ is the [thermal conductivity](https://en.wikipedia.org/wiki/Thermal_conductivity_and_resistivity), which is different for every element inside the domain. The steady-state thermal equation is considered since:
+
+* Joule heating has been applied long enough that temperature has stabilized,
+* A DC or low-frequency problem, is analyzed, where thermal inertia dominates,
+* If one cares only about the final temperature distribution and not how fast it heats up.
+
+Because of the spatial variance of thermal conductivity, and more specifically the discontinuities due to the different materials. Thus, a similar approach for discretization  as the one followed for voltage (electrical potential) is going to be considered here also. Using the same grid and conservative FD discretization the thermal stencil has the following form:
+
+$$\frac{k_{i+1/2,j}}{\Delta x^2} T_{i+1,j}+\frac{k_{i-1/2,j}}{\Delta x^2} T_{i-1,j}+\frac{k_{i,j+1/2}}{\Delta y^2} T_{i,j+1}+\frac{k_{i,j-1/2}}{\Delta y^2} T_{i,j-1}-\left( \frac{k_{i+1/2,j}+k_{i-1/2,j}}{\Delta x^2}+\frac{k_{i,j+1/2}+k_{i,j-1/2}}{\Delta y^2} \right) T_{i,j} = -Q_{i,j},$$
+
+with:
+
+$$Q_{i,j}=\sigma_{i,j} \left( \left(\frac{V_{i+1,j}-V_{i-1,j}}{2\Delta x} \right)^2 + \left( \frac{V_{i,j+1}-V_{i,j-1}}{2\Delta y} \right)^2 \right),$$
+
+and:
+
+$$k_{i+1/2,j} = \frac{2 k_{i,j} k_{i+1,j}}{k_{i,j} + k_{i+1,j}},$$
+
+$$k_{i-1/2,j} = \frac{2 k_{i,j} k_{i-1,j}}{k_{i,j} + k_{i-1,j}},$$
+
+$$k_{i,j+1/2} = \frac{2 k_{i,j} k_{i,j+1}}{k_{i,j} + k_{i,j+1}},$$
+
+$$k_{i,j-1/2} = \frac{2 k_{i,j} k_{i,j-1}}{k_{i,j} + k_{i,j-1}}.$$
+
+Again, harmonic mean is used to ensure conservation and continuity accross neighboring element with different thermal conductivity coefficients.
