@@ -87,3 +87,12 @@ $$\frac{J_x^{i+1/2,j}-J_x^{i-1/2,j}}{\Delta x}+\frac{J_y^{i,j+1/2}-J_y^{i,j-1/2}
 Substituting the fluxes corresponding to the faces to the conservation of flux above we obtain the five point conservative stencil:
 
 $$-\frac{\sigma_{i+1/2,j}}{\Delta x^2} V_{i+1,j}-\frac{\sigma_{i,j+1/2}}{\Delta y^2} V_{i,j+1} + \left( \frac{\sigma_{i+1/2,j}+\sigma_{i-1/2,j}}{\Delta x^2} + \frac{\sigma_{i,j+1/2}+\sigma_{i,j-1/2}}{\Delta y^2} \right) V_{i,j} -\frac{\sigma_{i-1/2,j}}{\Delta x^2} V_{i-1,j}-\frac{\sigma_{i,j-1/2}}{\Delta y^2} V_{i,j-1} = 0.$$
+
+All conductivities appearing in the stencil are given by the equations used in the definition of flux for each face (side) above. The derived scheme has some distinct advantages over standard FD:
+
+1. Enforces conservation,
+2. Handles discontinuous $\sigma$,
+3. It retains physical fidelity,
+4. It is more suitable for PDEs that are expressed in divergence form $(\nabla \cdot F = S)$, such as those arising in Electrostatics, Heat conduction, Fluid dynamics and Groundwater flow.
+
+It should be noted that the quantities $\Delta x = \frac{L_x}{n_x}$ and $\Delta y=\frac{L_y}{n_y}$ are the mesh sizes corresponding to each axis.
