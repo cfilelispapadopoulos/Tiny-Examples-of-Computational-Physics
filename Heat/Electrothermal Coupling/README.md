@@ -16,13 +16,13 @@ The conductivity of the wire as well as the substrate are considered to be indep
 
 $$\sigma_R(T) = \frac{\sigma_R^0}{1+\alpha (T-T_0)},$$
 
-where $\alpha$ is the temperature coefficient (per K), $T$ is the current temperature of the resistor and $T_0$ is the reference temperature. It should be noted that the width of the wires and the length and width of resistors are significant and are considered parameters in the numerical modelling process that follows. In order to make the modelling process easier, the distance of the resistors and length of the cables is considered arbistrary, since it does not affect significantly the results of this example. The governing equations will be presented in the next part.
+where $\alpha$ is the temperature coefficient ($K^{-1}$) (for steel is approximately $3 \times 10^{-3}$), $T$ is the current temperature of the resistor and $T_0$ is the reference temperature. It should be noted that the width of the wires and the length and width of resistors are significant and are considered parameters in the numerical modelling process that follows. In order to make the modelling process easier, the distance of the resistors and length of the cables is considered arbistrary, since it does not affect significantly the results of this example. The governing equations will be presented in the next part.
 
 ### Electrical Potential
 
 Initially the electrical potential of the IC is required. The Electrical Potential can be computed using the following governing equation:
 
-$$\nabla \cdot (\sigma(T) \nabla T) = 0.$$ 
+$$-\nabla \cdot (\sigma(T) \nabla T) = 0.$$ 
 
 This is a linear PDE which can be solved by either the Finite Differences or the Finite Elements method. Due to the normal geometry of the substrate (square) the Finite Differences method will be considered. In order to apply the FD method the substrate is discretized using a square grid composed of $n_x+1$ points in the $x$-direction and $n_y+1$ points in the $y$-direction. 
 
@@ -32,7 +32,7 @@ It should be noted that the axis are switched because MATLAB utilizes column-wis
 
 In order to solve the PDE the regular five point stencil is not going to yield a physically accurate solution. Instead, a conservative Flux-based discretization will be chosen, since the aforementioned PDE is derived from the charge conservation:
 
-$$\nabla \cdot (\sigma(T) \nabla T) = 0 \Rightarrow \nabla \cdot J = 0,$$
+$$-\nabla \cdot (\sigma(T) \nabla T) = 0 \Rightarrow \nabla \cdot J = 0,$$
 
 Thus, the net current into each cell is exactly zero. Another important advantage of Flux conservative FD is that this type of discretization preserves continuity $\sigma_1 \frac{\partial V}{\partial n} = \sigma_2 \frac{\partial V}{\partial n}$ in case of material discontinuities, such as conductivity discontinuity, especially when combined with harmonic averaging:
 
@@ -42,7 +42,7 @@ in neighboing cells with different conductivity $\sigma$.
 
 Let us consider the PDE on the above domain:
 
-$$\nabla \cdot (\sigma(x,y) \nabla T) = 0.$$
+$$-\nabla \cdot (\sigma(x,y) \nabla T) = 0.$$
 
 Let us also define a control surface centered at a vertex $(i,j)$. Integrating over the control volume we have:
 
@@ -142,3 +142,35 @@ $$k_{i,j+1/2} = \frac{2 k_{i,j} k_{i,j+1}}{k_{i,j} + k_{i,j+1}},$$
 $$k_{i,j-1/2} = \frac{2 k_{i,j} k_{i,j-1}}{k_{i,j} + k_{i,j-1}}.$$
 
 Again, harmonic mean is used to ensure conservation and continuity accross neighboring element with different thermal conductivity coefficients.
+
+Heat dissipation is perfromed through the boundaries. This can be modelled by considering [Robin boundary conditions](https://en.wikipedia.org/wiki/Robin_boundary_condition) of the following form:
+
+$$-k n\cdot \nabla T = h (T-T_{\infty})$$
+
+where $T_{\infty}$ is the ambient temperature, which is set equal to the reference temperature $T_0=293 K$, and $h$ is the convective heat transfer coefficient $(W/(m^2 \cdot K))$. The value of the convective heat transfer coefficient is set to $5$ $W/(m^2 \cdot K))$ approximating natural convection of a vertical plate facing up. 
+
+However, heat dissipation through the boundary is not enough to cool the IC. In practice heat dissipation also happens from the surface of the IC. Thus, a modification to the PDE is applied, namely:
+
+$$\nabla \cdot (k(x,y) \cdot \nabla T) + h_{vol} (T-T_{\infty})= - Q = - \sigma (x,y) |\nabla V|^2,$$
+
+where $h_{vol} = \frac{2h}{d}$ is the volumetric heat loss rate $(W/(m^3 \cdot K))$. The parameter $d$ is the thickness of the substrate, which was set to $3 mm$. This modification to the PDE leads to the addition of constant terms to the diagonal and the RHS of the sparse linear system.
+
+The incorporation of Robin boundary conditions happens by substituting their discrete version into the corresponding coefficient matrix equations. The coefficient matrix however is already incorporating Neumann Boundary conditions, thus only the diagonal element and the RHS are affected. More specifically, the diagonal elements are increased by the quantity:
+
+$$\frac{h \cdot h_x}{k_{i,j}}$$
+
+or 
+
+$$\frac{h \cdot h_y}{k_{i,j}}$$
+
+depending on the boundary. While the RHS is increased by the quantities:
+
+$$\frac{h \cdot h_x \cdot T_{\infty}}{k_{i,j}}$$
+
+or 
+
+$$\frac{h \cdot h_y \cdot T_{\infty}}{k_{i,j}}$$
+
+depending on the boundary. 
+
+An important note is that the Joule heating term $Q$ needs to be multiplied (scaled) by $h_x \cdot h_y$ to account for heat inside a cell. This returns the correct units required to acquire a physically meaningful result.
