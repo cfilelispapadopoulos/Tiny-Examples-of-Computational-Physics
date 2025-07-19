@@ -111,7 +111,7 @@ $$n \cdot \nabla V = 0 \Rightarrow \frac{\partial V}{\partial n} = 0.$$
 
 In our setup there are also the voltage pads, where the voltage is known a priori. In the left part (positive side) of the domain these points that correspond to the pad in the boundary are considered to have voltage equal to $1$ (Dirichlet). On the right side (negative side), the known voltage of the pad is considered to be $0$ (Dirichlet). In order to enforce these boundaries to the coefficient matrix the rows corresponding to these points should be substituted with the corresponding rows of the identity matrix $I$ of the same order as the coefficient matrix. This ensures homogeneous Neumann boundaries everywhere on the sides of the domain except the positive and negative pads.
 
-# Steady-state thermal equation
+### Steady-state thermal equation
 
 The steady-state thermal equation is considered instead of the transient one:
 
@@ -174,3 +174,19 @@ $$\frac{h \cdot h_y \cdot T_{\infty}}{k_{i,j}}$$
 depending on the boundary. 
 
 An important note is that the Joule heating term $Q$ needs to be multiplied (scaled) by $h_x \cdot h_y$ to account for heat inside a cell. This returns the correct units required to acquire a physically meaningful result.
+
+### Solution of the coupled system
+
+The process of solving the coupled system involves the following steps:
+
+1. Compute V
+2. Compute T
+3. Update $\sigma$ where required
+
+This process is repeated until a steady solution is reached. The chosen stopping criterion for the iterative process was set to $|max(T^i)-max(T^{i+1}|<10^{-3}$. Some indicative results for the above setup are given below.
+
+![4](https://github.com/user-attachments/assets/5ad1dca3-29c7-4df5-8663-94f07948b84e)
+![3](https://github.com/user-attachments/assets/0c46c732-4b75-4a1d-8807-d0e937fa5cee)
+![2](https://github.com/user-attachments/assets/7fb8c1d1-827e-4b9e-8874-6c1dd0902d81)
+![1](https://github.com/user-attachments/assets/04d7494e-28cd-42b5-95f4-c7a785242a9f)
+
