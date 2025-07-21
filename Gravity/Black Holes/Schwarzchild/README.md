@@ -20,7 +20,7 @@ $$ds^2 = - \left( 1-\frac{2M}{r} \right) dt^2 + \left( 1-\frac{2M}{r} \right)^{-
 
 The metric, without loss of generality, restricts the motion to a plane, resulting in a (2+1)D system.
 
-## Light rays and Null Geodesics
+## Light Rays and Null Geodesics
 
 The light rays follow null geodesics (lightlike or null worldlines), while for massive particles $ds^2<0$ (timelike worldlines), so the spacetime interval satisfies:
 
