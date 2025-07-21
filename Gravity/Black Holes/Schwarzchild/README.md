@@ -1,4 +1,4 @@
-# Full Ray-Tracing Near a Schwarzschild Black Hole
+# Light Ray-Tracing Near a Schwarzschild Black Hole
 ## Schwarzchild metric
 In order to simulate the trajectoris of light near a Schwarzchild black hole we need the [Schwarzchild metric](https://en.wikipedia.org/wiki/Schwarzschild_metric):
 
