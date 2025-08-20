@@ -153,4 +153,81 @@ which avoids writing extremely long symbolic derivatives, while still being accu
 
 ## Event horizon and ergosphere
 
+Horizons can be described as null hupersurfaces. A hypersurface in spacetime is defined by some scalar function $f(x^\mu) = 0$. The normal vector to that surface is $n_\mu=\partial_\mu f$. That surface is null if the norm of $n_\mu$ is zero:
+
+$$g^{\mu\nu}n_\mu n_\nu =0$$
+
+since the inverse metric $g^{\mu\nu}$ is what contracts the normal vector. In the case of the Kerr metric, if we take the surface $f(r)=r-r_H=0$, is:
+
+$$n_\mu=\partial_\mu f = (0,1,0,0),$$
+
+and its norm is:
+
+$$g^{\mu\nu}=n_\mu n_\nu = g^{rr}.$$
+
+Thus the surface is null when $g^{rr}=0$, which in the case of Kerr is:
+
+$$g^{rr}=\frac{\Delta}{\Sigma}=0 \Rightarrow \Delta=0,$$
+
+which leads to:
+
+$$r_\pm=M\pm \sqrt{M^2-\alpha^2}.$$
+
+The $r_+$ is the outer event horizon and $r_-$ is the inner (Cauchy) horizon. 
+
+Far away from the black hole $(r\rightarrow \infty)$, $g_{tt}\rightarrow -1$. The vector $\partial_t$ (time translation symmetry) is timelike. Near the rotating black hole, due to frame dragging, $g_tt$ changes sign, while at the surface $g_{tt}=0$ and the Killing vector $\partial_t$ becomes null. Inside the region $(g_{tt}>0)$, $\partial_t$ is spacelike. That means nothing can remain stationary (constant $r,\theta,\phi$) because the time direction no longer points to a timelike worldline. Thus, all observers are forcecd to co-rotate with the black hole. This region is the ergoregion and tis boundary, where $g_{tt}=0$, is the ergosphere.
+
+Thus this boundary can be defined using the timelike Killing vector $\xi^\mu = (\partial_t)^\mu$ becomes null:
+
+$$g_{\mu\nu} \xi^\mu \xi^\nu=0\Rightarrow g_{tt}=0\Rightarrow r_E(\theta)=M+\sqrt{M^2-\alpha^2 cos^2 \theta},$$
+
+which depends on the angle theta. At the poles $\theta=0,\pi$ the ergosphere matches the event horizon $r_E=r_+$. While at the equator $\theta=\frac{\pi}{2}$ the ergosphere has maximum radius $r_E=M+\sqrt{M^2-\alpha^2}$.
+
+The event horizon is a causal boundary which, once crossed, not even light can escape. The ergosphere is not a boundary of spacetime, but the region where no static observer can exist. You can still escape from it, but you cannot stand still relative to infinity.
+
+The event horizon is derived from $\Delta=0$ because it marks the null hypersurface trapping causal curves, while the ergosphere is derived from $g_{tt}=0$ because it marks the loss of static observers due to frame dragging.
+
+## Zero Angular Momentum Observers (ZAMOs) and frame-dragging angular velocity
+
+For any particle with $4$-velocity $u^\mu$, the conserved angular momentum associated with the axial Killing vector $\xi^\mu_{(\phi)}=\partial_\phi$ is:
+
+$$L=g_{\mu\nu} \xi^\mu_{(\phi)} u^\nu=g_{\phi\mu} u^\mu.$$
+
+This is the same angular momentum per unit mass, defined for geodesics earlier. A zeros angular momentum observer (ZAMO) is defined by:
+
+$$L=g_{\phi t}u^t+g_{\phi\phi}u^\phi=0.$$
+
+That is, the observer’s angular momentum relative to infinity vanishes. Solving for the angular velocity:
+
+$$\Omega=\frac{d\phi}{dt}=\frac{\frac{d\phi}{d\tau}}{\frac{dt}{d\tau}}=\frac{u^\phi}{u^t},$$
+
+and after substitution we obtain:
+
+$$\Omega=-\frac{g_{t\phi}}{g_{\phi\phi}}.$$
+
+This is the ZAMO angular velocity, also called the "frame-dragging angular velocity". The explicit form after substitution is the following:
+
+$$\Omega(r,\theta)=\frac{2M\alpha r}{(r^2+\alpha^2)^2-\alpha^2\Delta sin^2\theta}.$$
+
+Outside the ergosphere $\Omega$ is small and frame dragging negligible, while outside the ergosphere $\Omega$ is unavoidable and thus every observer is dragged in the $\phi$-direction. On the event horizon $(\Delta=0)$, $\Omega$ reduces to the angular velocity of the horizon:
+
+$$\Omega_H = \frac{\alpha}{r_+^2+\alpha^2}.$$
+
+Thus, the ZAMO concept smoothly interpolates from freely stationary observers far away to observers co-rotating with the black hole at the horizon.
+
+Using the angular velocity we can visualize frame dragging of grids. The change in angle $\phi$ can be described, with respect to a time step $\Delta t$ as follows:
+
+$$\Delta \phi = \Omega(r,\theta) \Delta t.$$
+
+Using this we can visualize the deformation or dragging of an inertial frame near the black hole over time.
+
+## Results
+
+Combining the above we get the following results.
+
+<img width="700" height="525" alt="image" src="https://github.com/user-attachments/assets/3a82d38d-52f8-4efa-90c6-495d4a61875f" />
+
+<img width="700" height="525" alt="image" src="https://github.com/user-attachments/assets/391d5be2-797d-483c-a0b5-27bc63ec58dc" />
+
+<img width="700" height="525" alt="image" src="https://github.com/user-attachments/assets/0de979a5-8a74-4109-8b35-d51ee97075ad" />
 
