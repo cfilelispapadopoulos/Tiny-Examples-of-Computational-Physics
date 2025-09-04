@@ -24,7 +24,7 @@ Numerical solution of Maxwell's equations for the described problem can be perfo
 
 $$\frac{\partial E}{\partial t} = - \frac{1}{\epsilon_r} \left( \nabla \times H \right)$$
 
-$$\frac{\partial E}{\partial t} = - \frac{1}{\mu_r} \left( \nabla \times E \right)$$
+$$\frac{\partial H}{\partial t} = - \frac{1}{\mu_r} \left( \nabla \times E \right)$$
 
 and it results in the following update equations:
 
