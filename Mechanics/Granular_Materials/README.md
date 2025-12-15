@@ -35,7 +35,7 @@ where $\tau_{ij}^{pp}$ and $\tau_{iw}^{pw}$ are the torques due to tangential fo
 
 In order for the various forces and torques to be computed, contact between particles or between particles and walls should be detected. Two particles $i$ and $j$ are in contact if:
 
-$$\delta_{ij}=R_i+R_j-\|x_i-x_j\|,$$
+$$\delta_{ij}=R_i+R_j-||x_i-x_j||,$$
 
 where $\delta_{ij}>0$ is the overlap. For the particle-wall contact, each wall is a line segment of the form:
 
@@ -43,10 +43,10 @@ $$s(t)=x_1+t(x_2-x_1), t\in[0,1],$$
 
 thus the closest point $x_c$ on this wall and particle $i$ is:
 
-$$t^{'}=clamp ( \frac{(x_i-x_1)(x_2-x_1)}{\|x_2-x_1\|^2},0,1),$$
+$$t^{'}=clamp ( \frac{(x_i-x_1)(x_2-x_1)}{||x_2-x_1||^2},0,1),$$
 $$x_c=x_1+t^{'} (x_2-x_1),$$
 
-where $clamp(x,a,b)$ is a function that restricts $x$ in the interval $[a,b]$. Thus, if $x<a$ then $clamp(x,a,b)=a$, if $x>b$ $clamp(x,a,b)=b$ and for $a\leq x \leq b$ we get $clamp(x,a,b)=x$. The $clamp$ function ensures the closest point lies on the wall segment, not outside it, avoiding contact with non-existent geometry. The overlap with the wall is $\delta_{iw}=R_i-\|x_i-x_c\|$.
+where $clamp(x,a,b)$ is a function that restricts $x$ in the interval $[a,b]$. Thus, if $x<a$ then $clamp(x,a,b)=a$, if $x>b$ $clamp(x,a,b)=b$ and for $a\leq x \leq b$ we get $clamp(x,a,b)=x$. The $clamp$ function ensures the closest point lies on the wall segment, not outside it, avoiding contact with non-existent geometry. The overlap with the wall is $\delta_{iw}=R_i-||x_i-x_c||$.
 
 ## Relative velocities at contact
 
@@ -54,7 +54,7 @@ The normal relative velocities are required in order to compute compressions or 
 
 $$\nu_n = (v_j-v_i)\dot n_{ij},$$
 
-where $n_{ij}=\frac{x_j-x_i}{\|x_j-x_i\|}$ is a unit normal vector pointing from particle $i$ towards particle $j$. The tangential relative velocity, including rotation, is defined as follows:
+where $n_{ij}=\frac{x_j-x_i}{||x_j-x_i||}$ is a unit normal vector pointing from particle $i$ towards particle $j$. The tangential relative velocity, including rotation, is defined as follows:
 
 $$\nu_t=(v_j-v_i)\dot t + R_i \omega_i + R_j \omega_j,$$
 
@@ -133,8 +133,8 @@ where $\mu_{log}$ mean of the natural logarithm of radius and $\sigma_{log}$ is 
 
 Another important step is relaxation. When particles are randomly placed in the domain, they often overlap initially and large initial overlaps create unrealistic forces. Moreover, direct simulation may lead to instabilities or explosions. Thus, relaxation is a preprocessing step that removes initial overlaps, brings particles to a mechanically stable state and repares realistic initial velocities and forces. The relaxation step requires high damping, thus $\gamma_n$ is set to a large value $\gamma_{relax}$, which dissipates kinetic energy quickly and prevents particles from bouncing excessively. For a prescribed number of steps the Velocity Verlet method is used to relax the particles. The forces are computed with high damping and the system slowly relaxes toward equilibrium. The relaxation is typically run for a fixed number of time steps (e.g. 1000) or until the maximum particle velocity falls below a threshold:
 
-$$max_i \|v_i\|<\nu_{tol},$$
-$$max_i \|\omega_i\|<\omega_{tol},$$
+$$max_i ||v_i||<\nu_{tol},$$
+$$max_i ||\omega_i||<\omega_{tol},$$
 
 and the system is considered mechanically stable. Once relaxation is complete the damping to normal simulation value $(\gamma_n)$.
 
