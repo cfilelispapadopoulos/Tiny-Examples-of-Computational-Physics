@@ -127,7 +127,7 @@ where $k_n$ is the Hertzian normal stiffness and $CFL$ is the CFL coefficient.
 
 In order to simulate the granular nature of sand, with different radius per particle, a log normal particle size distribution is utilized, since Many natural granular materials follow approximately log-normal statistics and skewed distributions are common in sands or powders:
 
-$$R \tilde LogNormal(\mu_{log},\sigma_{log}),$$
+$$R \~ LogNormal(\mu_{log},\sigma_{log}),$$
 
 where $\mu_{log}$ mean of the natural logarithm of radius and $\sigma_{log}$ is the standard deviation of the natural logarithm of radius.
 
