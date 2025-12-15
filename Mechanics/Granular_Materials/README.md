@@ -13,7 +13,7 @@ Angular Velocity: $\omega_i \in \mathbb{R}$,
 
 Radius: $R_i$,
 
-Mass: $m_i=\rho pi R_i^2$,
+Mass: $m_i=\rho \pi R_i^2$,
 
 Moment of Inertia for a disk: $I_i=\frac{1}{2} m_i R_i^2$,
 
