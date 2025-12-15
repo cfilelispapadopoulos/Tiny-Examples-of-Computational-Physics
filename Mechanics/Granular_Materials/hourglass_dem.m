@@ -1,4 +1,5 @@
-% 2D DEM hourglass,
+% 2D Discrete Element Method for simulating an hourglass
+% filled with sand under Hertzian forces
 clear; close all; rng(1);
 
 %% ---------------- Simulation Parameters ----------------
@@ -98,14 +99,14 @@ drawnow;
 dt = CFL * min(sqrt(m./kn));
 
 %% ---------------- Initial Relaxation ----------------
-force = computeForcesHertzFull(pos, vel, omega, Rs, m, I, walls, kn, kt, gamma_relax, mu, mu_roll, g);
+force = computeForces(pos, vel, omega, Rs, m, I, walls, kn, kt, gamma_relax, mu, mu_roll, g);
 acc = force(:,1:2)./m;
 alpha = force(:,3)./I;
 
 for step=1:relaxSteps
     pos = pos + vel*dt + 0.5*acc*dt^2;
     omega = omega + 0.5*alpha*dt;
-    force_new = computeForcesHertzFull(pos, vel, omega, Rs, m, I, walls, kn, kt, gamma_relax, mu, mu_roll, g);
+    force_new = computeForces(pos, vel, omega, Rs, m, I, walls, kn, kt, gamma_relax, mu, mu_roll, g);
     acc_new = force_new(:,1:2)./m;
     alpha_new = force_new(:,3)./I;
     
@@ -123,7 +124,7 @@ while t < t_end
     pos = pos + vel*dt + 0.5*acc*dt^2;
     omega = omega + 0.5*alpha*dt;
     
-    force_new = computeForcesHertzFull(pos, vel, omega, Rs, m, I, walls, kn, kt, gamma_n, mu, mu_roll, g);
+    force_new = computeForces(pos, vel, omega, Rs, m, I, walls, kn, kt, gamma_n, mu, mu_roll, g);
     acc_new = force_new(:,1:2)./m;
     alpha_new = force_new(:,3)./I;
     
@@ -144,8 +145,8 @@ end
 
 disp('Simulation complete.');
 
-%% ---------------- Function: Hertzian + Rolling Friction (Full Geometry) ----------------
-function F = computeForcesHertzFull(pos, vel, omega, R, m, I, walls, kn, kt, gamma_n, mu, mu_roll, g)
+%% ------------------------- Function: Hertzian + Rolling Friction -------------------------
+function F = computeForces(pos, vel, omega, R, m, I, walls, kn, kt, gamma_n, mu, mu_roll, g)
     N = size(pos,1);
     F = zeros(N,3);
     
@@ -220,3 +221,4 @@ function F = computeForcesHertzFull(pos, vel, omega, R, m, I, walls, kn, kt, gam
         end
     end
 end
+
