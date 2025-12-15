@@ -119,7 +119,7 @@ $$\omega_i^{n+1}=\omega_i^n+\frac{1}{2}(\alpha_i^n+\alpha_{i+1}^{n+1})\Delta t,$
 
 with $a_i=F_i/m_i$ and $\alpha_i=\tau_i/I_i$. The time step is chosen such that the [CFL](https://en.wikipedia.org/wiki/Courant%E2%80%93Friedrichs%E2%80%93Lewy_condition) condition is satisfied:
 
-$$\Delta t = CFL \; min_i(\sqrt{m_i/k_n}),$$
+$$\Delta t = CFL * min_i(\sqrt{m_i/k_n}),$$
 
 where $k_n$ is the Hertzian normal stiffness and $CFL$ is the CFL coefficient.
 
@@ -127,7 +127,7 @@ where $k_n$ is the Hertzian normal stiffness and $CFL$ is the CFL coefficient.
 
 In order to simulate the granular nature of sand, with different radius per particle, a log normal particle size distribution is utilized, since Many natural granular materials follow approximately log-normal statistics and skewed distributions are common in sands or powders:
 
-$$R~LogNormal(\mu_{log},\sigma_{log},$$
+$$R \tilde LogNormal(\mu_{log},\sigma_{log}),$$
 
 where $\mu_{log}$ mean of the natural logarithm of radius and $\sigma_{log}$ is the standard deviation of the natural logarithm of radius.
 
