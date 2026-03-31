@@ -153,7 +153,7 @@ which avoids writing extremely long symbolic derivatives, while still being accu
 
 ## Event horizon and ergosphere
 
-Horizons can be described as null hupersurfaces. A hypersurface in spacetime is defined by some scalar function $f(x^\mu) = 0$. The normal vector to that surface is $n_\mu=\partial_\mu f$. That surface is null if the norm of $n_\mu$ is zero:
+Horizons can be described as null hypersurfaces. A hypersurface in spacetime is defined by some scalar function $f(x^\mu) = 0$. The normal vector to that surface is $n_\mu=\partial_\mu f$. That surface is null if the norm of $n_\mu$ is zero:
 
 $$g^{\mu\nu}n_\mu n_\nu =0$$
 
