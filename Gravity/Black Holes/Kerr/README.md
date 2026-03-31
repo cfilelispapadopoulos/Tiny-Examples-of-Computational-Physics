@@ -102,7 +102,7 @@ The mass-shell condition (normalization of the $4$-momentum/velocity) is the fol
 
 $$g^{\mu\nu} p_\mu p_\nu = -\mu^2,$$
 
-where $\mu$ is the particle rest mass. For massive particles $\mu=1$ (choosing $c=1$ and $\lambda = \tau$), while for massless (photons) $\mu=0$ (with any affine parameter $\lambda$). Substituting the known conserved quatities $p_t = -E$, $p_\phi = L_z$ and $p_\theta$ throuth the Carter constant condition we derive a condition for $p_r$:
+where $\mu$ is the particle rest mass. For massive particles $\mu=1$ (choosing $c=1$ and $\lambda = \tau$), while for massless (photons) $\mu=0$ (with any affine parameter $\lambda$). Substituting the known conserved quatities $p_t = -E$, $p_\phi = L_z$ and $p_\theta$ through the Carter constant condition we derive a condition for $p_r$:
 
 $$\Delta p_r^2+p_\theta^2 + \frac{A}{\Delta}E^2-\frac{4M\alpha r}{\Delta}E L_z+\frac{\Delta-\alpha^2 sin^2\theta}{\Delta sin^2\theta}=-\mu^2 \Sigma.$$
 
