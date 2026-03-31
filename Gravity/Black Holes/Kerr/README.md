@@ -175,7 +175,7 @@ $$r_\pm=M\pm \sqrt{M^2-\alpha^2}.$$
 
 The $r_+$ is the outer event horizon and $r_-$ is the inner (Cauchy) horizon. 
 
-Far away from the black hole $(r\rightarrow \infty)$, $g_{tt}\rightarrow -1$. The vector $\partial_t$ (time translation symmetry) is timelike. Near the rotating black hole, due to frame dragging, $g_{tt}$ changes sign, while at the surface $g_{tt}=0$ and the Killing vector $\partial_t$ becomes null. Inside the region $(g_{tt}>0)$, $\partial_t$ is spacelike. That means nothing can remain stationary (constant $r,\theta,\phi$) because the time direction no longer points to a timelike worldline. Thus, all observers are forcecd to co-rotate with the black hole. This region is the ergoregion and tis boundary, where $g_{tt}=0$, is the ergosphere.
+Far away from the black hole $(r\rightarrow \infty)$, $g_{tt}\rightarrow -1$. The vector $\partial_t$ (time translation symmetry) is timelike. Near the rotating black hole, due to frame dragging, $g_{tt}$ changes sign, while at the surface $g_{tt}=0$ and the Killing vector $\partial_t$ becomes null. Inside the region $(g_{tt}>0)$, $\partial_t$ is spacelike. That means nothing can remain stationary (constant $r,\theta,\phi$) because the time direction no longer points to a timelike worldline. Thus, all observers are forced to co-rotate with the black hole. This region is the ergoregion and tis boundary, where $g_{tt}=0$, is the ergosphere.
 
 Thus this boundary can be defined using the timelike Killing vector $\xi^\mu = (\partial_t)^\mu$ becomes null:
 
